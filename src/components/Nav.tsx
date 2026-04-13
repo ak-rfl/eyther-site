@@ -1,16 +1,43 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+
+const solutionLinks = [
+  { label: "For Agencies", href: "/solutions/agencies" },
+  { label: "For Enterprise", href: "/solutions/enterprise" },
+];
+
+const tradeLinks = [
+  { label: "Plumbing", href: "/trades/plumbing" },
+  { label: "HVAC", href: "/trades/hvac" },
+  { label: "Electrical", href: "/trades/electrical" },
+  { label: "Roofing", href: "/trades/roofing" },
+  { label: "Landscaping", href: "/trades/landscaping" },
+];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setSolutionsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -27,16 +54,92 @@ export default function Nav() {
 
         {/* Desktop Links */}
         <ul className="hidden md:flex gap-8 items-center">
-          {["How It Works", "Results", "Pricing", "FAQ"].map((item) => (
-            <li key={item}>
-              <a
-                href={`/#${item.toLowerCase().replace(/ /g, "-")}`}
-                className="text-concrete-600 text-[15px] font-medium hover:text-concrete-900 transition-colors"
+          <li>
+            <a
+              href="/#how-it-works"
+              className="text-concrete-600 text-[15px] font-medium hover:text-concrete-900 transition-colors"
+            >
+              How It Works
+            </a>
+          </li>
+
+          {/* Solutions Dropdown */}
+          <li className="relative" ref={dropdownRef}>
+            <button
+              className="text-concrete-600 text-[15px] font-medium hover:text-concrete-900 transition-colors flex items-center gap-1"
+              onClick={() => setSolutionsOpen(!solutionsOpen)}
+              onMouseEnter={() => setSolutionsOpen(true)}
+            >
+              Solutions
+              <svg
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  solutionsOpen ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
-                {item}
-              </a>
-            </li>
-          ))}
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {/* Dropdown Panel */}
+            <div
+              className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
+                solutionsOpen
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 -translate-y-1 pointer-events-none"
+              }`}
+              onMouseLeave={() => setSolutionsOpen(false)}
+            >
+              <div className="bg-white/95 backdrop-blur-xl rounded-xl border border-concrete-100 shadow-lg shadow-concrete-900/8 p-5 w-[280px]">
+                {/* Solution links */}
+                <div className="space-y-1 mb-4">
+                  {solutionLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-3 py-2.5 rounded-lg text-[15px] font-medium text-concrete-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
+                      onClick={() => setSolutionsOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Divider + Trade links */}
+                <div className="border-t border-concrete-100 pt-3">
+                  <p className="px-3 text-[11px] font-bold uppercase tracking-[1.5px] text-concrete-400 mb-2">
+                    By Trade
+                  </p>
+                  <div className="space-y-0.5">
+                    {tradeLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-3 py-2 rounded-lg text-[14px] text-concrete-600 hover:bg-primary-50 hover:text-primary-700 transition-colors"
+                        onClick={() => setSolutionsOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a
+              href="/#pricing"
+              className="text-concrete-600 text-[15px] font-medium hover:text-concrete-900 transition-colors"
+            >
+              Pricing
+            </a>
+          </li>
           <li>
             <Link
               href="/blog"
@@ -101,16 +204,81 @@ export default function Nav() {
         }`}
       >
         <div className="flex flex-col p-6 gap-4">
-          {["How It Works", "Results", "Pricing", "FAQ"].map((item) => (
-            <a
-              key={item}
-              href={`/#${item.toLowerCase().replace(/ /g, "-")}`}
-              className="text-concrete-700 text-lg font-medium py-2"
-              onClick={() => setMobileOpen(false)}
+          <a
+            href="/#how-it-works"
+            className="text-concrete-700 text-lg font-medium py-2"
+            onClick={() => setMobileOpen(false)}
+          >
+            How It Works
+          </a>
+
+          {/* Mobile Solutions Accordion */}
+          <div>
+            <button
+              className="text-concrete-700 text-lg font-medium py-2 w-full text-left flex items-center justify-between"
+              onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
             >
-              {item}
-            </a>
-          ))}
+              Solutions
+              <svg
+                className={`w-4 h-4 text-concrete-400 transition-transform duration-200 ${
+                  mobileSolutionsOpen ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                mobileSolutionsOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="pl-4 pt-1 pb-2 space-y-3">
+                {solutionLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block text-concrete-600 text-[16px] font-medium py-1"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileSolutionsOpen(false);
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-concrete-400 pt-2">
+                  By Trade
+                </p>
+                {tradeLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block text-concrete-600 text-[15px] py-1"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileSolutionsOpen(false);
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="/#pricing"
+            className="text-concrete-700 text-lg font-medium py-2"
+            onClick={() => setMobileOpen(false)}
+          >
+            Pricing
+          </a>
           <Link
             href="/blog"
             className="text-concrete-700 text-lg font-medium py-2"

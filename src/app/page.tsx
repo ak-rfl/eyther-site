@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import TradeVerticals from "@/components/TradeVerticals";
+import WhoIsItFor from "@/components/WhoIsItFor";
 import Problems from "@/components/Problems";
 import InlineCTA from "@/components/InlineCTA";
 import SleepingTimeline from "@/components/SleepingTimeline";
@@ -37,6 +38,9 @@ export default function Home() {
 
       {/* Trade Verticals */}
       <TradeVerticals />
+
+      {/* Who is homeAI for? */}
+      <WhoIsItFor />
 
       {/* 2. The Problem */}
       <Problems />

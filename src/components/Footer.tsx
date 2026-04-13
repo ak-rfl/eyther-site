@@ -12,8 +12,8 @@ export default function Footer() {
   return (
     <footer className="bg-concrete-900 pt-16 pb-8 text-white/60">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          <div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10 mb-12">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <a href="#" className="font-heading text-[22px] font-extrabold text-white inline-block mb-4">
               home<span className="text-accent-500">AI</span>
             </a>
@@ -21,6 +21,29 @@ export default function Footer() {
               The AI-powered marketing team for home services contractors. Strategy
               that adapts to your business. Marketing that runs 24/7.
             </p>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-[1.5px] text-white/30 mb-4">
+              Solutions
+            </h4>
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  href="/solutions/agencies"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  For Agencies
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/solutions/enterprise"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  For Enterprise
+                </Link>
+              </li>
+            </ul>
           </div>
           <div>
             <h4 className="text-xs font-bold uppercase tracking-[1.5px] text-white/30 mb-4">
