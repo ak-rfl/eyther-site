@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — Tailwind v4 theme
+   Full color palette from the unified design brief
+   ═══════════════════════════════════════════════ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Blueprint Blue */
+  --color-primary-50: #EBF5FD;
+  --color-primary-100: #D4EAFA;
+  --color-primary-300: #7BB8D9;
+  --color-primary-500: #2185B5;
+  --color-primary-700: #1A5276;
+  --color-primary-900: #0C2D48;
+
+  /* Workshop Amber */
+  --color-secondary-50: #FDF8EF;
+  --color-secondary-100: #F8EDD7;
+  --color-secondary-500: #D4901A;
+  --color-secondary-700: #986212;
+
+  /* Safety Orange */
+  --color-accent-400: #F07438;
+  --color-accent-500: #E8560F;
+  --color-accent-600: #C4480A;
+
+  /* Concrete Neutrals */
+  --color-concrete-50: #F4F5F7;
+  --color-concrete-100: #E8EAEE;
+  --color-concrete-200: #D2D6DC;
+  --color-concrete-400: #8D95A0;
+  --color-concrete-600: #545B67;
+  --color-concrete-700: #3D434D;
+  --color-concrete-900: #1A1E24;
+
+  /* Semantic */
+  --color-success: #1B9E5C;
+  --color-warning: #D4901A;
+  --color-error: #D93B3B;
+
+  /* Fonts */
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ═══════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-concrete-900);
+  background: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════ */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(27, 158, 92, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(27, 158, 92, 0); }
+}
+
+@keyframes typing-dot {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
 }
