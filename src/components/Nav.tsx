@@ -59,7 +59,7 @@ export default function Nav() {
             (800) 555-1234
           </a>
           <a
-            href="#audit"
+            href="/audit"
             className="bg-accent-500 text-white text-sm font-medium px-5 py-2.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_8px_rgba(232,86,15,0.25)]"
           >
             Get My Free Audit
@@ -128,7 +128,7 @@ export default function Nav() {
             (800) 555-1234
           </a>
           <a
-            href="#audit"
+            href="/audit"
             className="bg-accent-500 text-white text-center font-medium px-6 py-3.5 rounded-[10px] mt-2"
             onClick={() => setMobileOpen(false)}
           >

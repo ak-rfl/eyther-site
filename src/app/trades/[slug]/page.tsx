@@ -568,7 +568,7 @@ export default async function TradePage({
 
             <FadeIn delay={0.2}>
               <a
-                href="/#audit"
+                href="/audit"
                 className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-[17px] px-7 py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.4)]"
               >
                 {data.ctaLabel}
@@ -781,7 +781,7 @@ export default async function TradePage({
               jobs are leaking out -- and what your AI team would do about it.
             </p>
             <a
-              href="/#audit"
+              href="/audit"
               className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-lg px-8 py-4.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.35)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.5)]"
             >
               {data.ctaLabel}

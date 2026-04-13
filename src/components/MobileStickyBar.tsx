@@ -24,7 +24,7 @@ export default function MobileStickyBar() {
       }`}
     >
       <a
-        href="#audit"
+        href="/audit"
         className="block w-full bg-accent-500 text-white text-center font-medium py-3.5 rounded-[10px] shadow-[0_2px_8px_rgba(232,86,15,0.25)]"
       >
         Get My Free Marketing Audit

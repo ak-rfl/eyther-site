@@ -10,7 +10,7 @@ interface InlineCTAProps {
 export default function InlineCTA({
   text = "See what your AI marketing team would do for your business.",
   buttonText = "Get My Free Audit",
-  href = "#audit",
+  href = "/audit",
   dark = false,
 }: InlineCTAProps) {
   return (

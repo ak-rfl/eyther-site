@@ -196,7 +196,7 @@ export default async function BlogPostPage({
               competitors, and the opportunities you&apos;re missing.
             </p>
             <a
-              href="/#audit"
+              href="/audit"
               className="inline-block bg-accent-500 text-white text-base font-medium px-8 py-3.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)]"
             >
               Get My Free Audit

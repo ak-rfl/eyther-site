@@ -20,7 +20,7 @@ export default function FinalCTA() {
         <FadeIn delay={0.2}>
           <div className="flex flex-col sm:flex-row gap-3 max-w-[480px] mx-auto justify-center mb-6">
             <a
-              href="#audit"
+              href="/audit"
               className="bg-accent-500 text-white font-medium px-7 py-3.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_8px_rgba(232,86,15,0.25)] whitespace-nowrap inline-flex items-center justify-center gap-2"
             >
               Get My Free Audit

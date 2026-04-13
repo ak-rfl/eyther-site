@@ -119,7 +119,7 @@ export default function Pricing() {
                   ))}
                 </ul>
                 <a
-                  href="#audit"
+                  href="/audit"
                   className={`w-full text-center font-medium py-3.5 rounded-[10px] transition-colors ${
                     t.featured
                       ? "bg-accent-500 text-white hover:bg-accent-600 shadow-[0_2px_8px_rgba(232,86,15,0.25)]"
