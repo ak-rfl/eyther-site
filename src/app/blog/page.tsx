@@ -21,14 +21,11 @@ export default function BlogPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
             <div className="text-center max-w-[700px] mx-auto">
-              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-primary-500 rounded" />
-                The homeAI Blog
-              </div>
-              <h1 className="font-heading text-3xl md:text-[44px] font-bold tracking-tight mb-4 leading-tight">
+              <h1 className="font-heading text-4xl md:text-[56px] font-extrabold tracking-tight mb-4 leading-[1.08]">
                 Marketing insights for contractors who&apos;d rather be on the
                 job site
               </h1>
+              <div className="w-16 h-1 bg-[#F5C518] rounded-full mx-auto mt-4 mb-6" />
               <p className="text-lg text-concrete-600 leading-relaxed">
                 Real strategies, real numbers, and honest advice for home
                 services businesses. No marketing jargon, no fluff — just what
@@ -47,20 +44,15 @@ export default function BlogPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-primary-900 py-16 md:py-20">
+      <section className="bg-[#F5C518] py-16 md:py-20">
         <div className="max-w-[700px] mx-auto px-6 text-center">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-[34px] font-bold text-white mb-4 leading-tight">
+            <h2 className="font-heading text-3xl md:text-[40px] text-concrete-900 font-extrabold tracking-tight mb-8 leading-tight">
               Stop guessing. Start growing.
             </h2>
-            <p className="text-base md:text-lg text-white/60 mb-8 leading-relaxed">
-              Get a free marketing audit that shows you exactly where your leads
-              are coming from, where you&apos;re losing them, and what to fix
-              first.
-            </p>
             <a
               href="/#audit"
-              className="inline-block bg-accent-500 text-white text-base font-medium px-8 py-3.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)]"
+              className="inline-block bg-concrete-900 text-white rounded-full px-10 py-4 font-bold text-base hover:opacity-90 transition-opacity"
             >
               Get My Free Marketing Audit
             </a>

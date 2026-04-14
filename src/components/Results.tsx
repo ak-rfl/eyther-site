@@ -42,7 +42,7 @@ export default function Results() {
               <span className="w-8 h-0.5 bg-primary-500 rounded" />
               Results
             </div>
-            <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight mb-3">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight mb-3">
               What Happens When You Actually Have a Marketing Team
             </h2>
             <p className="text-lg text-concrete-600">

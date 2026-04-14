@@ -6,12 +6,12 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import CountUp from "@/components/CountUp";
-import InlineCTA from "@/components/InlineCTA";
 import { enterprisePage } from "@/data/solutions-enterprise";
 
 /* ═══════════════════════════════════════════════
-   Enterprise Solution Page
+   Enterprise Solution Page — Redesigned
    /solutions/enterprise
+   Split-layout hero + phone mockups
    ═══════════════════════════════════════════════ */
 
 const {
@@ -27,6 +27,45 @@ const {
   finalCta,
 } = enterprisePage;
 
+/* ─── Agent card icon colors ─── */
+const agentIconColors = [
+  "bg-blue-500",
+  "bg-emerald-500",
+  "bg-orange-500",
+  "bg-teal-500",
+];
+
+/* ─── SVG icons for agent action cards ─── */
+function AgentIcon({ index }: { index: number }) {
+  const icons = [
+    // Propagate — share/broadcast
+    <svg key="0" className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" />
+      <polyline points="16 6 12 2 8 6" />
+      <line x1="12" y1="2" x2="12" y2="15" />
+    </svg>,
+    // Detect — radar/alert
+    <svg key="1" className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+      <line x1="12" y1="9" x2="12" y2="13" />
+      <line x1="12" y1="17" x2="12.01" y2="17" />
+    </svg>,
+    // Localize — map pin
+    <svg key="2" className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>,
+    // Onboard — rocket
+    <svg key="3" className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" />
+      <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3" />
+    </svg>,
+  ];
+  return icons[index % icons.length];
+}
+
 /* ─── FAQ Accordion (inline client component) ─── */
 
 function FAQAccordion({
@@ -37,10 +76,16 @@ function FAQAccordion({
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="max-w-[720px] mx-auto">
+    <div className="max-w-[780px] mx-auto">
       {items.map((item, i) => (
-        <FadeIn key={i} delay={0.05 * i}>
-          <div className="border-b border-concrete-200">
+        <FadeIn key={i} delay={0.04 * i}>
+          <div
+            className={`border-b border-concrete-200 transition-all duration-300 ${
+              openIndex === i
+                ? "border-l-4 border-l-primary-500 pl-5 bg-primary-50"
+                : "border-l-4 border-l-transparent pl-5"
+            }`}
+          >
             <button
               className="w-full py-6 flex items-center justify-between gap-4 text-left"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -51,8 +96,10 @@ function FAQAccordion({
                 {item.question}
               </span>
               <svg
-                className={`w-6 h-6 shrink-0 text-concrete-400 transition-transform duration-300 ${
-                  openIndex === i ? "rotate-180 text-primary-500" : ""
+                className={`w-6 h-6 shrink-0 transition-transform duration-300 ${
+                  openIndex === i
+                    ? "rotate-180 text-primary-500"
+                    : "text-concrete-400"
                 }`}
                 viewBox="0 0 24 24"
                 fill="none"
@@ -83,6 +130,29 @@ function FAQAccordion({
 }
 
 /* ═══════════════════════════════════════════════
+   Phone Mockup Shell
+   ═══════════════════════════════════════════════ */
+
+function PhoneMockup({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bg-concrete-900 rounded-[40px] p-3 shadow-[0_20px_60px_rgba(26,30,36,0.35)]">
+      <div className="bg-[#12151A] rounded-[32px] overflow-hidden">
+        {/* Notch */}
+        <div className="flex justify-center pt-3 pb-1 bg-[#12151A]">
+          <div className="w-[100px] h-[28px] bg-concrete-900 rounded-full" />
+        </div>
+        {/* Screen content */}
+        {children}
+        {/* Home indicator */}
+        <div className="pb-4 pt-2 flex justify-center bg-[#12151A]">
+          <div className="w-[100px] h-1 rounded-full bg-white/20" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════
    PAGE
    ═══════════════════════════════════════════════ */
 
@@ -91,155 +161,175 @@ export default function EnterprisePage() {
     <>
       <Nav />
 
-      {/* ─── 1. Hero ─── */}
-      <section className="bg-secondary-50 pt-[120px] pb-16 md:pb-20">
+      {/* ─── 1. HERO — white bg, split layout ─── */}
+      <section className="bg-white pt-[140px] pb-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          {/* Breadcrumb */}
-          <FadeIn>
-            <nav className="flex items-center gap-2 text-sm text-concrete-400 mb-8">
-              <Link
-                href="/"
-                className="hover:text-concrete-700 transition-colors"
-              >
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-concrete-700 font-medium">Enterprise</span>
-            </nav>
-          </FadeIn>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — text */}
+            <div className="max-w-[560px]">
+              <FadeIn delay={0.05}>
+                <h1 className="font-heading text-4xl md:text-[56px] font-extrabold tracking-tight leading-[1.08] text-concrete-900 mb-6">
+                  {hero.headline}
+                </h1>
+              </FadeIn>
 
-          <div className="max-w-[900px]">
-            <FadeIn delay={0.05}>
-              <span className="inline-flex items-center gap-2 bg-primary-100 text-primary-700 rounded-full px-4 py-2 text-sm font-semibold mb-6">
-                <svg
-                  className="w-4 h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+              <FadeIn delay={0.1}>
+                <p className="text-lg text-concrete-600 leading-relaxed mb-8">
+                  {hero.subheadline}
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.15}>
+                <Link
+                  href={hero.cta.href}
+                  className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
                 >
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                </svg>
-                {hero.badge}
-              </span>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              <h1 className="font-heading text-4xl md:text-[52px] md:leading-[1.1] font-extrabold tracking-tight text-concrete-900 mb-5">
-                {hero.headline}
-              </h1>
-            </FadeIn>
-
-            <FadeIn delay={0.15}>
-              <p className="text-lg md:text-xl text-concrete-600 leading-relaxed mb-8 max-w-[720px]">
-                {hero.subheadline}
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <Link
-                href={hero.cta.href}
-                className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-[17px] px-7 py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.4)]"
-              >
-                {hero.cta.text}
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </FadeIn>
-          </div>
-
-          {/* Hero Stats */}
-          <FadeIn delay={0.3}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-14">
-              {hero.stats.map((stat, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-xl border border-concrete-100 p-6 text-center"
-                >
-                  <div className="font-heading text-3xl md:text-[40px] font-extrabold text-primary-700 mb-1">
-                    {stat.num}
-                  </div>
-                  <p className="text-sm text-concrete-600">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ─── Trust Badges ─── */}
-      <FadeIn>
-        <div className="bg-white border-b border-concrete-100 py-6">
-          <div className="max-w-[1200px] mx-auto px-6">
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              {trustBadges.map((badge, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 text-concrete-400"
-                >
+                  {hero.cta.text}
                   <svg
-                    className="w-4 h-4 shrink-0"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    strokeWidth="2.5"
                   >
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="M9 12l2 2 4-4" />
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
-                  <span className="text-xs font-medium tracking-wide uppercase">
-                    {badge.name}
-                  </span>
+                </Link>
+              </FadeIn>
+
+              {/* Stat badges */}
+              <FadeIn delay={0.25}>
+                <div className="grid grid-cols-3 gap-6 mt-12">
+                  {hero.stats.map((stat, i) => (
+                    <div key={i} className="text-left">
+                      <div className="text-3xl md:text-[40px] font-extrabold text-concrete-900 mb-2">
+                        {stat.num}
+                      </div>
+                      <div className="w-10 h-1 bg-primary-500 rounded-full mb-3" />
+                      <p className="text-sm text-concrete-500 leading-relaxed">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
+              </FadeIn>
+            </div>
+
+            {/* Right — phone mockup: Network Dashboard */}
+            <FadeIn delay={0.3}>
+              <div className="max-w-[380px] mx-auto lg:ml-auto">
+                <PhoneMockup>
+                  <div className="px-5 pt-3 pb-4">
+                    {/* Header bar */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div>
+                        <p className="text-white/40 text-[10px] uppercase tracking-widest">Network Dashboard</p>
+                        <p className="text-white font-bold text-lg">homeAI</p>
+                      </div>
+                      <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1">
+                        <span className="text-emerald-400 text-[11px] font-semibold">47 locations active</span>
+                      </div>
+                    </div>
+
+                    {/* Location cards row */}
+                    <div className="space-y-2 mb-4">
+                      {[
+                        { city: "Phoenix", campaigns: 12 },
+                        { city: "Dallas", campaigns: 8 },
+                        { city: "Charlotte", campaigns: 6 },
+                      ].map((loc, i) => (
+                        <div key={i} className="bg-white/[0.06] rounded-lg px-4 py-3 flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                            <span className="text-white text-[13px] font-medium">{loc.city}</span>
+                          </div>
+                          <span className="text-white/50 text-[11px]">{loc.campaigns} campaigns live</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Insight card */}
+                    <div className="bg-[#F5C518]/15 border border-[#F5C518]/25 rounded-lg p-4 mb-4">
+                      <p className="text-[#F5C518] text-[10px] uppercase tracking-wider font-semibold mb-1.5">Network Alert</p>
+                      <p className="text-white text-[12px] leading-relaxed">
+                        Phoenix drain cleaning tactic outperforming by 40%. Auto-propagating to 12 similar markets.
+                      </p>
+                    </div>
+
+                    {/* Progress bars — network health */}
+                    <div className="space-y-3">
+                      <p className="text-white/40 text-[10px] uppercase tracking-wider">Network Health</p>
+                      {[
+                        { label: "Budget utilization", pct: 87, color: "bg-emerald-400" },
+                        { label: "Lead quality score", pct: 92, color: "bg-[#F5C518]" },
+                        { label: "Brand compliance", pct: 96, color: "bg-blue-400" },
+                      ].map((bar, i) => (
+                        <div key={i}>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-white/60 text-[11px]">{bar.label}</span>
+                            <span className="text-white/80 text-[11px] font-bold">{bar.pct}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div className={`h-full ${bar.color} rounded-full`} style={{ width: `${bar.pct}%` }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </PhoneMockup>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 2. TRUST BADGES — light gray ─── */}
+      <FadeIn>
+        <div className="bg-[#F7F8FA] py-8 border-y border-concrete-100">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
+              {trustBadges.map((badge, i) => (
+                <span
+                  key={i}
+                  className="text-xs font-semibold tracking-[1.5px] uppercase text-concrete-400"
+                >
+                  {badge.name}
+                </span>
               ))}
             </div>
           </div>
         </div>
       </FadeIn>
 
-      {/* ─── 2. The Enterprise Problem (Dark) ─── */}
-      <section className="bg-concrete-900 py-20 md:py-24">
+      {/* ─── 3. PROBLEMS — light section ─── */}
+      <section className="bg-concrete-50 py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
-            <div className="mb-14">
-              <div className="text-accent-400 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-accent-400 rounded" />
-                The Ceiling
-              </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-white mb-3 max-w-[800px]">
-                {problems.sectionTitle}
-              </h2>
-              <p className="text-lg text-concrete-400 max-w-[660px]">
-                {problems.sectionSubtitle}
-              </p>
+            <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4">
+              <span className="w-8 h-0.5 bg-primary-500 rounded" />
+              The Problem
             </div>
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-4 max-w-[900px]">
+              {problems.sectionTitle}
+            </h2>
+            <p className="text-lg text-concrete-600 max-w-[660px] mb-14">
+              {problems.sectionSubtitle}
+            </p>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {problems.cards.map((card, i) => (
               <FadeIn key={i} delay={0.1 * i}>
-                <div className="bg-concrete-700/30 border border-concrete-700 rounded-xl p-7 h-full hover:border-accent-400/50 transition-all">
+                <div className="bg-white border-l-4 border-l-primary-500 border border-concrete-200 shadow-sm rounded-xl p-7 h-full hover:shadow-md transition-all duration-300">
                   <div className="text-3xl mb-4">{card.emoji}</div>
-                  <p className="text-accent-400 text-sm font-medium mb-4 leading-relaxed italic">
+                  <p className="text-primary-500 text-sm font-bold mb-3 leading-relaxed">
                     {card.stat}
                   </p>
-                  <h3 className="font-heading text-lg font-bold text-white mb-3">
+                  <h3 className="font-heading text-lg font-bold text-concrete-900 mb-3">
                     {card.title}
                   </h3>
-                  <p className="text-concrete-400 leading-relaxed text-[15px]">
+                  <p className="text-concrete-600 leading-relaxed text-[15px]">
                     {card.description}
                   </p>
                 </div>
@@ -249,97 +339,146 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* ─── 3. InlineCTA — Bridge ─── */}
-      <InlineCTA
-        text="Sound familiar? Here's what changes."
-        buttonText="Talk to Our Team"
-        href="/solutions/enterprise/contact"
-        dark
-      />
-
-      {/* ─── 4. How homeAI Changes This ─── */}
-      <section className="bg-white py-20 md:py-24">
+      {/* ─── 4. HOW IT CHANGES — yellow section, split layout ─── */}
+      <section className="bg-[#F5C518] py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">
-          <FadeIn>
-            <div className="mb-14">
-              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-primary-500 rounded" />
-                The Shift
-              </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3 max-w-[800px]">
-                {howItChanges.headline}
-              </h2>
-              <p className="text-lg text-concrete-600 max-w-[720px]">
-                {howItChanges.subheadline}
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {howItChanges.bullets.map((bullet, i) => (
-              <FadeIn key={i} delay={0.15 + i * 0.08}>
-                <div className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center mt-1">
-                    <svg
-                      className="w-5 h-5 text-primary-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-lg font-bold text-concrete-900 mb-2">
-                      {bullet.title}
-                    </h3>
-                    <p className="text-concrete-600 leading-relaxed text-[15px]">
-                      {bullet.description}
-                    </p>
-                  </div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — text + bullet cards */}
+            <div>
+              <FadeIn>
+                <div className="text-concrete-900/60 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4">
+                  <span className="w-8 h-0.5 bg-concrete-900/40 rounded" />
+                  The Solution
                 </div>
+                <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-4">
+                  {howItChanges.headline}
+                </h2>
+                <p className="text-lg text-concrete-900/60 max-w-[520px] mb-10">
+                  {howItChanges.subheadline}
+                </p>
               </FadeIn>
-            ))}
+
+              <div className="space-y-4">
+                {howItChanges.bullets.map((bullet, i) => (
+                  <FadeIn key={i} delay={0.1 * i}>
+                    <div className="bg-concrete-900 rounded-xl p-5 hover:-translate-y-1 transition-all duration-300">
+                      <div className="flex items-start gap-4">
+                        <div className="shrink-0 w-9 h-9 rounded-full bg-[#F5C518] flex items-center justify-center">
+                          <span className="font-heading font-extrabold text-concrete-900 text-xs">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+                        <div>
+                          <h3 className="font-heading text-[16px] font-bold text-white mb-1.5">
+                            {bullet.title}
+                          </h3>
+                          <p className="text-concrete-400 leading-relaxed text-[14px]">
+                            {bullet.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — phone mockup: Location Intelligence */}
+            <FadeIn delay={0.3}>
+              <div className="max-w-[380px] mx-auto lg:ml-auto">
+                <PhoneMockup>
+                  <div className="px-5 pt-3 pb-4">
+                    {/* Location header */}
+                    <div className="mb-5">
+                      <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Location Intelligence</p>
+                      <p className="text-white font-bold text-lg flex items-center gap-2">
+                        <svg className="w-4 h-4 text-[#F5C518]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
+                        </svg>
+                        Phoenix, AZ
+                      </p>
+                    </div>
+
+                    {/* Competitor alert */}
+                    <div className="bg-rose-500/15 border border-rose-500/25 rounded-lg p-4 mb-3">
+                      <p className="text-rose-400 text-[10px] uppercase tracking-wider font-semibold mb-1.5">Competitor Alert</p>
+                      <p className="text-white text-[12px] leading-relaxed">
+                        Main competitor launched $49 drain deal. Recommend countering with free inspection offer.
+                      </p>
+                    </div>
+
+                    {/* Seasonal insight */}
+                    <div className="bg-blue-500/15 border border-blue-500/25 rounded-lg p-4 mb-3">
+                      <p className="text-blue-400 text-[10px] uppercase tracking-wider font-semibold mb-1.5">Seasonal Insight</p>
+                      <p className="text-white text-[12px] leading-relaxed">
+                        AC demand peaks in 3 weeks. Suggest ramping spend by 25% now.
+                      </p>
+                    </div>
+
+                    {/* Cross-network */}
+                    <div className="bg-emerald-500/15 border border-emerald-500/25 rounded-lg p-4 mb-3">
+                      <p className="text-emerald-400 text-[10px] uppercase tracking-wider font-semibold mb-1.5">Cross-Network</p>
+                      <p className="text-white text-[12px] leading-relaxed">
+                        Dallas success pattern applied — projected +28% conversion lift.
+                      </p>
+                    </div>
+
+                    {/* Confidence meter */}
+                    <div className="bg-white/[0.06] rounded-lg p-3">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-white/50 text-[11px]">Agent confidence</span>
+                        <span className="text-[#F5C518] text-[11px] font-bold">94%</span>
+                      </div>
+                      <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                        <div className="w-[94%] h-full bg-[#F5C518] rounded-full" />
+                      </div>
+                    </div>
+                  </div>
+                </PhoneMockup>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ─── 5. What the Agent Actually Does ─── */}
-      <section className="bg-concrete-50 py-20 md:py-24 border-y border-concrete-100">
+      {/* ─── 5. AGENT ACTIONS — white bg, 2x2 grid ─── */}
+      <section className="bg-white py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
-            <div className="text-center mb-12">
-              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
+            <div className="text-center mb-14">
+              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4 justify-center">
                 <span className="w-8 h-0.5 bg-primary-500 rounded" />
-                Agent Capabilities
+                Your Network Agent
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 {agentActions.headline}
               </h2>
+              <div className="w-16 h-1 bg-primary-500 rounded-full mx-auto mb-4" />
               <p className="text-lg text-concrete-600 max-w-[660px] mx-auto">
                 {agentActions.subheadline}
               </p>
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {agentActions.cards.map((card, i) => (
               <FadeIn key={i} delay={0.08 * i}>
-                <div className="bg-white rounded-xl border-2 border-concrete-100 p-7 h-full hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                  <div className="w-9 h-9 rounded-lg bg-primary-50 flex items-center justify-center mb-4">
-                    <span className="text-primary-500 font-heading font-bold text-sm">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                <div className="rounded-xl border border-concrete-200 p-7 h-full hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 group">
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`shrink-0 w-12 h-12 rounded-full ${agentIconColors[i % agentIconColors.length]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <AgentIcon index={i} />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-[17px] font-bold text-concrete-900 mb-2 group-hover:text-concrete-600 transition-colors">
+                        {card.title}
+                      </h3>
+                      <p className="text-concrete-600 text-[15px] leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-heading text-[17px] font-bold text-concrete-900 mb-3">
-                    {card.title}
-                  </h3>
-                  <p className="text-concrete-600 text-[15px] leading-relaxed">
-                    {card.description}
-                  </p>
                 </div>
               </FadeIn>
             ))}
@@ -347,23 +486,16 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* ─── 6. Mid-page InlineCTA ─── */}
-      <InlineCTA
-        text="See what network intelligence looks like for your locations."
-        buttonText="Schedule a Consultation"
-        href="/solutions/enterprise/contact"
-      />
-
-      {/* ─── 7. The Scale Story ─── */}
-      <section className="bg-white py-20 md:py-24">
-        <div className="max-w-[1200px] mx-auto px-6">
+      {/* ─── 6. SCALE / STATS — white bg, CountUp numbers ─── */}
+      <section className="bg-white py-20 md:py-28 border-t border-concrete-100">
+        <div className="max-w-[1000px] mx-auto px-6">
           <FadeIn>
-            <div className="text-center mb-12">
-              <div className="text-success text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-success rounded" />
-                The Numbers
+            <div className="text-center mb-14">
+              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4 justify-center">
+                <span className="w-8 h-0.5 bg-primary-500 rounded" />
+                At Scale
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 {scaleStats.headline}
               </h2>
               <p className="text-lg text-concrete-600 max-w-[560px] mx-auto">
@@ -372,11 +504,11 @@ export default function EnterprisePage() {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {scaleStats.stats.map((stat, i) => (
               <FadeIn key={i} delay={0.1 * i}>
-                <div className="bg-concrete-50 rounded-xl border border-concrete-100 p-6 text-center hover:border-primary-300 transition-colors">
-                  <div className="font-heading text-3xl md:text-[42px] font-extrabold text-primary-700 mb-2">
+                <div className="text-center py-6">
+                  <div className="font-heading text-5xl font-extrabold text-concrete-900 mb-1">
                     {typeof stat.value === "number" ? (
                       <CountUp
                         end={stat.value}
@@ -392,6 +524,7 @@ export default function EnterprisePage() {
                       </>
                     )}
                   </div>
+                  <div className="w-12 h-1 bg-primary-500 rounded-full mx-auto mt-2 mb-3" />
                   <p className="text-sm text-concrete-600 font-medium">
                     {stat.label}
                   </p>
@@ -402,16 +535,16 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* ─── 8. Integration & Security ─── */}
-      <section className="bg-primary-50 py-20 md:py-24">
+      {/* ─── 7. INTEGRATIONS — light bg, pills ─── */}
+      <section className="bg-concrete-50 py-16 border-y border-concrete-100">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
-            <div className="text-center mb-12">
-              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
+            <div className="text-center mb-10">
+              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4 justify-center">
                 <span className="w-8 h-0.5 bg-primary-500 rounded" />
-                Integrations
+                Security & Integrations
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 {integrationSecurity.headline}
               </h2>
               <p className="text-lg text-concrete-600 max-w-[720px] mx-auto">
@@ -420,112 +553,118 @@ export default function EnterprisePage() {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {integrationSecurity.items.map((item, i) => (
-              <FadeIn key={i} delay={0.08 * i}>
-                <div className="bg-white rounded-xl border-2 border-concrete-100 p-6 h-full hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-success/10 flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-success"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="font-heading font-bold text-concrete-900">
-                      {item.name}
-                    </h3>
-                  </div>
-                  <p className="text-concrete-600 text-[15px] leading-relaxed">
-                    {item.description}
-                  </p>
+          <FadeIn delay={0.1}>
+            <div className="flex flex-wrap justify-center gap-3">
+              {integrationSecurity.items.map((item, i) => (
+                <div
+                  key={i}
+                  className="inline-flex items-center gap-2 bg-white border border-concrete-200 rounded-full px-5 py-2.5 text-sm font-semibold text-concrete-900 hover:border-[#F5C518] hover:shadow-sm transition-all duration-200 cursor-default"
+                  title={item.description}
+                >
+                  <div className="w-2 h-2 rounded-full bg-[#F5C518]" />
+                  {item.name}
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ─── 9. Pricing ─── */}
-      <section className="bg-white py-20 md:py-24">
-        <div className="max-w-[800px] mx-auto px-6">
+      {/* ─── 8. PRICING — white bg ─── */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-[800px] mx-auto px-6 text-center">
           <FadeIn>
-            <div className="text-center mb-10">
-              <div className="text-accent-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-accent-500 rounded" />
-                Pricing
-              </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
-                {pricing.headline}
-              </h2>
-              <p className="text-lg text-concrete-600 max-w-[600px] mx-auto">
-                {pricing.subheadline}
-              </p>
+            <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4 justify-center">
+              <span className="w-8 h-0.5 bg-primary-500 rounded" />
+              Pricing
             </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <p className="text-concrete-400 text-[15px] leading-relaxed text-center mb-10">
-              {pricing.detail}
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-4">
+              {pricing.headline}
+            </h2>
+            <p className="text-lg text-concrete-600 max-w-[600px] mx-auto mb-10">
+              {pricing.subheadline}
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <div className="text-center">
-              <Link
-                href={pricing.cta.href}
-                className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-[17px] px-8 py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.4)]"
-              >
-                {pricing.cta.text}
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
+          <FadeIn delay={0.1}>
+            <div className="max-w-[520px] mx-auto mb-10">
+              {pricing.detail.split(". ").map((sentence, i) => (
+                <div key={i} className="flex items-start gap-3 mb-4 text-left">
+                  <div className="shrink-0 w-6 h-6 rounded-full bg-[#F5C518] flex items-center justify-center mt-0.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-concrete-900"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-concrete-600 text-[15px] leading-relaxed">
+                    {sentence.trim()}
+                    {!sentence.trim().endsWith(".") ? "." : ""}
+                  </p>
+                </div>
+              ))}
             </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <Link
+              href={pricing.cta.href}
+              className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-lg transition-all duration-200"
+            >
+              {pricing.cta.text}
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
           </FadeIn>
         </div>
       </section>
 
-      {/* ─── 10. FAQ ─── */}
-      <section className="bg-concrete-50 py-20 md:py-24" id="faq">
+      {/* ─── 9. FAQ — white bg ─── */}
+      <section className="bg-white py-20 md:py-28" id="faq">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900">
-                {faq.headline}
+            <div className="text-center mb-14">
+              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4 justify-center">
+                <span className="w-8 h-0.5 bg-primary-500 rounded" />
+                FAQ
+              </div>
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
+                Questions From Enterprise Teams
               </h2>
+              <div className="w-16 h-1 bg-primary-500 rounded-full mx-auto" />
             </div>
           </FadeIn>
           <FAQAccordion items={faq.items} />
         </div>
       </section>
 
-      {/* ─── 11. Final CTA (Dark) ─── */}
-      <section className="bg-concrete-900 py-20 md:py-24">
-        <div className="max-w-[800px] mx-auto px-6 text-center">
+      {/* ─── 10. FINAL CTA — yellow section ─── */}
+      <section className="bg-[#F5C518] py-20 md:py-28">
+        <div className="max-w-[900px] mx-auto px-6 text-center">
           <FadeIn>
-            <h2 className="font-heading text-3xl md:text-[44px] md:leading-[1.15] font-extrabold tracking-tight text-white mb-5">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 leading-tight mb-5">
               {finalCta.headline}
             </h2>
-            <p className="text-lg text-white/50 mb-8 max-w-[600px] mx-auto">
+            <p className="text-lg text-concrete-900/60 mb-10 max-w-[600px] mx-auto">
               {finalCta.subheadline}
             </p>
             <Link
               href={finalCta.cta.href}
-              className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-lg px-8 py-4.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.35)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.5)]"
+              className="inline-flex items-center gap-2 bg-concrete-900 text-white font-bold text-lg px-10 py-4 rounded-full hover:scale-105 hover:shadow-xl transition-all duration-200"
             >
               {finalCta.cta.text}
               <svg

@@ -38,7 +38,7 @@ export default function FAQ() {
       <div className="max-w-[1200px] mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight">
               Questions Contractors Ask Us
             </h2>
           </div>

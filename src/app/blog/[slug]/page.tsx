@@ -127,7 +127,7 @@ export default async function BlogPostPage({
                 </span>
               </div>
 
-              <h1 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight leading-tight mb-5 text-concrete-900">
+              <h1 className="font-heading text-4xl md:text-[56px] font-extrabold tracking-tight leading-[1.08] mb-5 text-concrete-900">
                 {post.title}
               </h1>
 
@@ -153,7 +153,7 @@ export default async function BlogPostPage({
             {/* Gradient Cover Image */}
             <FadeIn delay={0.1}>
               <div
-                className={`w-full h-56 md:h-72 rounded-xl bg-gradient-to-br ${categoryColors[post.category]} mb-10 relative overflow-hidden`}
+                className={`w-full h-56 md:h-72 rounded-xl bg-gradient-to-br ${categoryColors[post.category]} mb-10 relative overflow-hidden border-b-4 border-[#F5C518]`}
               >
                 <div className="absolute inset-0 bg-black/5" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -184,20 +184,16 @@ export default async function BlogPostPage({
       </article>
 
       {/* CTA Section */}
-      <section className="bg-primary-50 py-14 md:py-18 border-t border-primary-100">
+      <section className="bg-[#F5C518] py-14 md:py-18">
         <div className="max-w-[600px] mx-auto px-6 text-center">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-[30px] font-bold text-concrete-900 mb-3 leading-tight">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold text-concrete-900 tracking-tight mb-7 leading-tight">
               See how homeAI can help your{" "}
               {categoryCtaCopy[post.category]} business
             </h2>
-            <p className="text-base text-concrete-600 mb-7 leading-relaxed">
-              Get a free marketing audit with real data about your market, your
-              competitors, and the opportunities you&apos;re missing.
-            </p>
             <a
               href="/audit"
-              className="inline-block bg-accent-500 text-white text-base font-medium px-8 py-3.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)]"
+              className="inline-block bg-concrete-900 text-white rounded-full px-8 py-3.5 font-bold text-base hover:opacity-90 transition-opacity"
             >
               Get My Free Audit
             </a>
@@ -210,9 +206,10 @@ export default async function BlogPostPage({
         <section className="bg-white py-16 md:py-20 border-t border-concrete-100">
           <div className="max-w-[1200px] mx-auto px-6">
             <FadeIn>
-              <h2 className="font-heading text-2xl md:text-[30px] font-bold text-concrete-900 mb-8 text-center">
-                Keep reading
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold text-concrete-900 text-center tracking-tight">
+                Keep Reading
               </h2>
+              <div className="w-12 h-1 bg-[#F5C518] rounded-full mx-auto mt-3 mb-8" />
             </FadeIn>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

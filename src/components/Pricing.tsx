@@ -61,7 +61,7 @@ export default function Pricing() {
               <span className="w-8 h-0.5 bg-primary-500 rounded" />
               Pricing
             </div>
-            <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight mb-3">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight mb-3">
               Your AI Marketing Team. One Monthly Price.
             </h2>
             <p className="text-lg text-concrete-600">
@@ -122,7 +122,7 @@ export default function Pricing() {
                   href="/audit"
                   className={`w-full text-center font-medium py-3.5 rounded-[10px] transition-colors ${
                     t.featured
-                      ? "bg-accent-500 text-white hover:bg-accent-600 shadow-[0_2px_8px_rgba(232,86,15,0.25)]"
+                      ? "bg-[#F5C518] text-concrete-900 hover:scale-105 shadow-[0_4px_20px_rgba(245,197,24,0.3)]"
                       : "border-2 border-primary-500 text-primary-500 hover:bg-primary-50"
                   }`}
                 >
