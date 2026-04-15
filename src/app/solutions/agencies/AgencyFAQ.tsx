@@ -17,7 +17,7 @@ export default function AgencyFAQ({ headline, items }: AgencyFAQProps) {
       <div className="max-w-[1200px] mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900">
               {headline}
             </h2>
           </div>

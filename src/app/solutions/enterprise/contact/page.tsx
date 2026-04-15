@@ -191,8 +191,9 @@ export default function EnterpriseContactPage() {
       console.log("Enterprise consultation form submitted:", formData);
       setIsSuccess(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch {
-      // Handle error silently for now
+    } catch (error) {
+      console.error("Enterprise form submission failed:", error);
+      alert("Something went wrong. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -252,7 +253,7 @@ export default function EnterpriseContactPage() {
                   </motion.svg>
                 </div>
 
-                <h2 className="font-heading text-2xl md:text-[32px] font-bold text-concrete-900 mb-3 tracking-tight">
+                <h2 className="font-heading text-3xl md:text-[40px] font-extrabold text-concrete-900 mb-3 tracking-tight leading-tight">
                   We Got It. Expect a Call Within 24 Hours.
                 </h2>
 
@@ -359,7 +360,7 @@ export default function EnterpriseContactPage() {
                 </svg>
                 Enterprise Intake
               </span>
-              <h1 className="font-heading text-3xl md:text-[44px] md:leading-[1.15] font-extrabold tracking-tight text-concrete-900 mb-4">
+              <h1 className="font-heading text-4xl md:text-[56px] font-extrabold tracking-tight leading-[1.08] text-concrete-900 mb-4">
                 Schedule a Consultation
               </h1>
               <p className="text-lg text-concrete-600 max-w-[540px] mx-auto">
@@ -558,7 +559,7 @@ export default function EnterpriseContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-accent-500 text-white font-semibold text-[17px] px-7 py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.4)] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-cta text-concrete-900 font-bold text-[17px] px-7 py-4 rounded-full hover:scale-105 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

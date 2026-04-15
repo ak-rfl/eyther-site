@@ -14,7 +14,7 @@ export default function AuditForm() {
               <span className="w-8 h-0.5 bg-primary-500 rounded" />
               Free Marketing Audit
             </div>
-            <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight mb-3">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight mb-3">
               See What Your AI Marketing Team Would Do &mdash; Free
             </h2>
             <p className="text-lg text-concrete-600 max-w-[560px] mx-auto mb-10">
@@ -58,7 +58,7 @@ export default function AuditForm() {
 
               <Link
                 href="/audit"
-                className="w-full bg-accent-500 text-white font-medium text-[17px] py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_8px_rgba(232,86,15,0.25)] flex items-center justify-center gap-2"
+                className="w-full bg-cta text-concrete-900 font-bold text-[17px] py-4 rounded-full hover:scale-105 transition-all flex items-center justify-center gap-2"
               >
                 Get My Free Marketing Audit
                 <svg

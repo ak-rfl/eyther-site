@@ -18,7 +18,7 @@ const cards = [
     prefix: "",
     number: 0,
     suffix: "",
-    color: "text-primary-300",
+    color: "text-primary-500",
     title: "Hours Spent on Marketing Strategy",
     text: "You're a great operator. But when's the last time someone designed a marketing campaign around what makes YOUR business different? That's what a marketing team does.",
   },
@@ -36,23 +36,23 @@ const cards = [
 
 export default function Problems() {
   return (
-    <section className="bg-primary-900 py-20 md:py-24" id="problems">
+    <section className="bg-concrete-50 py-20 md:py-24" id="problems">
       <div className="max-w-[1200px] mx-auto px-6">
         <FadeIn>
-          <div className="text-primary-300 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4">
-            <span className="w-8 h-0.5 bg-primary-300 rounded" />
+          <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4">
+            <span className="w-8 h-0.5 bg-primary-500 rounded" />
             The problem
           </div>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h2 className="font-heading text-3xl md:text-[40px] font-bold text-white leading-tight tracking-tight mb-3">
+          <h2 className="font-heading text-3xl md:text-[40px] font-bold text-concrete-900 leading-tight tracking-tight mb-3">
             You&apos;re the Best Contractor in Your Town.
             <br />
             But Google Doesn&apos;t Know That.
           </h2>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p className="text-lg text-primary-300 max-w-[600px] leading-relaxed mb-14">
+          <p className="text-lg text-concrete-600 max-w-[600px] leading-relaxed mb-14">
             Big companies have a full marketing team. You have whatever you can
             squeeze in between jobs. That gap is costing you more than you think.
           </p>
@@ -61,7 +61,7 @@ export default function Problems() {
         <div className="grid md:grid-cols-3 gap-6">
           {cards.map((card, i) => (
             <FadeIn key={card.title} delay={0.1 * i}>
-              <div className="bg-white/5 border border-white/8 rounded-xl p-8 hover:bg-white/8 transition-all hover:-translate-y-0.5">
+              <div className="bg-white border border-concrete-200 shadow-sm rounded-xl p-8 hover:shadow-md transition-all hover:-translate-y-0.5">
                 <div className="text-2xl mb-5">{card.icon}</div>
                 <div
                   className={`font-heading text-[44px] font-extrabold tracking-tight leading-none mb-2 ${card.color}`}
@@ -77,10 +77,10 @@ export default function Problems() {
                     />
                   )}
                 </div>
-                <h3 className="text-white text-lg font-semibold font-heading mb-2">
+                <h3 className="text-concrete-900 text-lg font-semibold font-heading mb-2">
                   {card.title}
                 </h3>
-                <p className="text-primary-300 text-[15px] leading-relaxed">
+                <p className="text-concrete-600 text-[15px] leading-relaxed">
                   {card.text}
                 </p>
               </div>

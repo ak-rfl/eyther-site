@@ -163,7 +163,7 @@ export default function Nav() {
           </a>
           <a
             href="/audit"
-            className="bg-accent-500 text-white text-sm font-medium px-5 py-2.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_8px_rgba(232,86,15,0.25)]"
+            className="bg-cta text-concrete-900 text-sm font-bold px-5 py-2.5 rounded-full hover:scale-105 transition-all"
           >
             Get My Free Audit
           </a>
@@ -297,7 +297,7 @@ export default function Nav() {
           </a>
           <a
             href="/audit"
-            className="bg-accent-500 text-white text-center font-medium px-6 py-3.5 rounded-[10px] mt-2"
+            className="bg-cta text-concrete-900 text-center font-bold px-6 py-3.5 rounded-full mt-2"
             onClick={() => setMobileOpen(false)}
           >
             Get My Free Audit

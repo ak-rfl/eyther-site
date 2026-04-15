@@ -494,6 +494,13 @@ export async function generateMetadata({
 }
 
 /* ═══════════════════════════════════════════════
+   AVATAR COLORS — cycle through for AI actions
+   ═══════════════════════════════════════════════ */
+
+const avatarColors = ["#2185B5", "#1B9E5C", "#E8560F", "#0D9488"];
+const actionEmojis = ["\u26A1", "\u2B50", "\u{1F680}", "\u{1F4A1}", "\u{1F3AF}", "\u{1F50D}"];
+
+/* ═══════════════════════════════════════════════
    PAGE COMPONENT
    ═══════════════════════════════════════════════ */
 
@@ -517,9 +524,7 @@ export default async function TradePage({
       <Nav />
 
       {/* ─── Section 1: Trade Hero ─── */}
-      <section
-        className={`bg-gradient-to-b ${data.gradientFrom} ${data.gradientTo} pt-[120px] pb-16 md:pb-20`}
-      >
+      <section className="bg-white pt-[120px] pb-16 md:pb-20">
         <div className="max-w-[1200px] mx-auto px-6">
           {/* Breadcrumb */}
           <FadeIn>
@@ -555,7 +560,7 @@ export default async function TradePage({
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <h1 className="font-heading text-4xl md:text-[52px] md:leading-[1.1] font-extrabold tracking-tight text-concrete-900 mb-5">
+              <h1 className="font-heading text-4xl md:text-[56px] md:leading-[1.08] font-extrabold tracking-tight text-concrete-900 mb-5">
                 {data.headline}
               </h1>
             </FadeIn>
@@ -569,7 +574,7 @@ export default async function TradePage({
             <FadeIn delay={0.2}>
               <a
                 href="/audit"
-                className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-[17px] px-7 py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.4)]"
+                className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform"
               >
                 {data.ctaLabel}
                 <svg
@@ -583,21 +588,24 @@ export default async function TradePage({
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
+              <p className="text-sm text-concrete-400 mt-4">
+                ★★★★★ Trusted by 500+ {trade.name} contractors
+              </p>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ─── Section 2: The Problem ─── */}
-      <section className="bg-white py-16 md:py-24">
+      {/* ─── Section 2: The Problem (Pain Points) ─── */}
+      <section className="bg-concrete-50 py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-12">
-              <div className="text-accent-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-accent-500 rounded" />
-                Sound Familiar?
+              <div className="text-primary-500 text-xs font-medium tracking-[3px] uppercase flex items-center justify-center gap-2 mb-4">
+                <span className="w-8 h-0.5 bg-primary-500 rounded" />
+                SOUND FAMILIAR?
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 The {trade.name} Marketing Problem
               </h2>
               <p className="text-lg text-concrete-600 max-w-[560px] mx-auto">
@@ -610,9 +618,9 @@ export default async function TradePage({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {data.problems.map((problem, i) => (
               <FadeIn key={i} delay={0.1 * i}>
-                <div className="group bg-concrete-50 border-2 border-concrete-100 rounded-xl p-7 h-full hover:border-accent-400 hover:shadow-lg transition-all">
+                <div className="group bg-white border-l-4 border-cta border border-concrete-200 shadow-sm rounded-xl p-7 h-full hover:shadow-md transition-all">
                   {/* Problem number */}
-                  <div className="w-10 h-10 rounded-lg bg-accent-500/10 text-accent-500 font-heading font-bold text-sm flex items-center justify-center mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-cta/15 text-concrete-900 font-heading font-bold text-sm flex items-center justify-center mb-5">
                     0{i + 1}
                   </div>
                   <h3 className="font-heading text-lg font-bold text-concrete-900 mb-3">
@@ -633,16 +641,16 @@ export default async function TradePage({
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-12">
-              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
+              <div className="text-primary-500 text-xs font-medium tracking-[3px] uppercase flex items-center justify-center gap-2 mb-4">
                 <span className="w-8 h-0.5 bg-primary-500 rounded" />
-                Your AI Marketing Team
+                YOUR AI MARKETING TEAM
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 What Your AI {trade.name} Team Does
               </h2>
               <p className="text-lg text-concrete-600 max-w-[560px] mx-auto">
                 Think of it like having a tireless marketing manager who knows
-                {trade.name.toLowerCase()} inside and out. Here&apos;s what they do every week -- automatically.
+                {" "}{trade.name.toLowerCase()} inside and out. Here&apos;s what they do every week -- automatically.
               </p>
             </div>
           </FadeIn>
@@ -652,19 +660,12 @@ export default async function TradePage({
               <FadeIn key={i} delay={0.08 * i}>
                 <div className="bg-white rounded-xl border border-concrete-100 p-6 h-full hover:shadow-md transition-shadow">
                   <div className="flex items-start gap-4">
-                    {/* Checkmark */}
-                    <div className="shrink-0 w-8 h-8 rounded-full bg-success/10 flex items-center justify-center mt-0.5">
-                      <svg
-                        className="w-4 h-4 text-success"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M20 6L9 17l-5-5" />
-                      </svg>
+                    {/* Colored circle avatar with emoji */}
+                    <div
+                      className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center mt-0.5 text-white text-lg"
+                      style={{ backgroundColor: avatarColors[i % avatarColors.length] }}
+                    >
+                      {actionEmojis[i % actionEmojis.length]}
                     </div>
                     <div>
                       <h3 className="font-heading text-[15px] font-bold text-concrete-900 mb-1.5">
@@ -682,7 +683,7 @@ export default async function TradePage({
         </div>
       </section>
 
-      {/* ─── Section 4: Results Preview ─── */}
+      {/* ─── Section 4: Results Preview (Stats) ─── */}
       <section className="bg-white py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
@@ -691,7 +692,7 @@ export default async function TradePage({
                 <span className="w-8 h-0.5 bg-success rounded" />
                 Projected Results
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-concrete-900 mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 Real Numbers From Real {trade.name} Contractors
               </h2>
             </div>
@@ -710,7 +711,8 @@ export default async function TradePage({
                       duration={2}
                     />
                   </div>
-                  <p className="text-sm text-concrete-600 font-medium">
+                  <div className="w-12 h-1 bg-cta rounded-full mx-auto mt-2" />
+                  <p className="text-sm text-concrete-600 font-medium mt-3">
                     {stat.label}
                   </p>
                 </div>
@@ -721,18 +723,18 @@ export default async function TradePage({
       </section>
 
       {/* ─── Section 5: How It Works Timeline ─── */}
-      <section className="bg-primary-900 py-16 md:py-24">
+      <section className="bg-concrete-50 py-16 md:py-24">
         <div className="max-w-[900px] mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-14">
-              <div className="text-primary-300 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
-                <span className="w-8 h-0.5 bg-primary-300 rounded" />
+              <div className="text-primary-500 text-xs font-medium tracking-[2px] uppercase flex items-center justify-center gap-2 mb-4">
+                <span className="w-8 h-0.5 bg-primary-500 rounded" />
                 Getting Started
               </div>
-              <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight text-white mb-3">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-3">
                 Live in 7 Days. Optimizing Forever.
               </h2>
-              <p className="text-lg text-primary-300 max-w-[500px] mx-auto">
+              <p className="text-lg text-concrete-600 max-w-[500px] mx-auto">
                 From first audit to live campaigns in one week. No 90-minute
                 onboarding calls. No &ldquo;strategy decks.&rdquo; Just results.
               </p>
@@ -745,20 +747,20 @@ export default async function TradePage({
                 <div className="relative flex gap-6 md:gap-8">
                   {/* Timeline line + dot */}
                   <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-full bg-accent-500 text-white font-heading font-bold text-sm flex items-center justify-center shrink-0 z-10">
+                    <div className="bg-cta text-concrete-900 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0 z-10">
                       {item.step}
                     </div>
                     {i < data.timeline.length - 1 && (
-                      <div className="w-0.5 flex-1 bg-white/10 my-2" />
+                      <div className="w-0.5 flex-1 bg-concrete-200 my-2" />
                     )}
                   </div>
 
                   {/* Content */}
                   <div className={`pb-10 ${i === data.timeline.length - 1 ? "pb-0" : ""}`}>
-                    <h3 className="font-heading text-lg md:text-xl font-bold text-white mb-2">
+                    <h3 className="font-heading text-lg md:text-xl font-bold text-concrete-900 mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-primary-300 leading-relaxed text-[15px]">
+                    <p className="text-concrete-600 leading-relaxed text-[15px]">
                       {item.description}
                     </p>
                   </div>
@@ -769,20 +771,20 @@ export default async function TradePage({
         </div>
       </section>
 
-      {/* ─── Section 6: CTA ─── */}
-      <section className="bg-concrete-900 py-16 md:py-24">
+      {/* ─── Section 6: Bottom CTA ─── */}
+      <section className="bg-cta py-16 md:py-24">
         <div className="max-w-[800px] mx-auto px-6 text-center">
           <FadeIn>
-            <h2 className="font-heading text-3xl md:text-[44px] md:leading-[1.15] font-extrabold tracking-tight text-white mb-5">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-5 leading-tight">
               {data.ctaHeadline}
             </h2>
-            <p className="text-lg text-white/50 mb-8 max-w-[500px] mx-auto">
+            <p className="text-lg text-concrete-900/60 mb-8 max-w-[500px] mx-auto">
               Get a free marketing audit. We&apos;ll show you exactly where booked
               jobs are leaking out -- and what your AI team would do about it.
             </p>
             <a
               href="/audit"
-              className="inline-flex items-center gap-2 bg-accent-500 text-white font-semibold text-lg px-8 py-4.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.35)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.5)]"
+              className="inline-flex items-center gap-2 bg-concrete-900 text-white rounded-full px-10 py-4 font-bold text-lg hover:bg-black transition-colors"
             >
               {data.ctaLabel}
               <svg
@@ -796,9 +798,9 @@ export default async function TradePage({
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-            <div className="flex items-center justify-center gap-1.5 mt-5 text-sm text-white/30">
+            <div className="flex items-center justify-center gap-1.5 mt-5 text-sm text-concrete-400">
               <svg
-                className="w-4 h-4 text-success"
+                className="w-4 h-4 text-concrete-400"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -817,7 +819,7 @@ export default async function TradePage({
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-10">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tight text-concrete-900 mb-2">
+              <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-2">
                 Explore Other Trades
               </h2>
               <p className="text-concrete-600">

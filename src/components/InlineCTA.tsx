@@ -17,20 +17,20 @@ export default function InlineCTA({
     <FadeIn>
       <div
         className={`py-12 ${
-          dark ? "bg-primary-900" : "bg-primary-50"
+          dark ? "bg-concrete-50" : "bg-cta/10"
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p
             className={`text-lg font-medium ${
-              dark ? "text-primary-100" : "text-primary-700"
+              dark ? "text-concrete-700" : "text-primary-700"
             }`}
           >
             {text}
           </p>
           <a
             href={href}
-            className="bg-accent-500 text-white font-medium px-7 py-3.5 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_8px_rgba(232,86,15,0.25)] whitespace-nowrap shrink-0"
+            className="font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-all whitespace-nowrap shrink-0 bg-cta text-concrete-900"
           >
             {buttonText}
           </a>

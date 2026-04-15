@@ -14,7 +14,7 @@ export default function Comparison() {
       <div className="max-w-[1200px] mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <h2 className="font-heading text-3xl md:text-[40px] font-bold tracking-tight mb-3">
+            <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight mb-3">
               Your Agency vs. Your AI Marketing Team
             </h2>
             <p className="text-lg text-concrete-600">

@@ -33,6 +33,12 @@
   --color-concrete-700: #3D434D;
   --color-concrete-900: #1A1E24;
 
+  /* CTA Yellow */
+  --color-cta: #F5C518;
+
+  /* Phone Mockup Dark */
+  --color-phone-dark: #12151A;
+
   /* Semantic */
   --color-success: #1B9E5C;
   --color-warning: #D4901A;
@@ -64,6 +70,16 @@ h1, h2, h3, h4, h5, h6 {
 /* ═══════════════════════════════════════════════
    ANIMATIONS
    ═══════════════════════════════════════════════ */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(27, 158, 92, 0.4); }
   50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(27, 158, 92, 0); }
@@ -76,4 +92,202 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-pulse-dot {
   animation: pulse-dot 2s infinite;
+}
+
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — Typography & Component Classes
+   ═══════════════════════════════════════════════
+
+   TYPOGRAPHY SCALE
+   ────────────────────────────────────────────
+   Level          │ Desktop    │ Mobile  │ Weight     │ Case
+   ────────────────────────────────────────────
+   ds-hero        │ 72px       │ 48px    │ extrabold  │ Sentence
+   ds-page-title  │ 56px       │ 36px    │ extrabold  │ Sentence
+   ds-section     │ 40px       │ 30px    │ extrabold  │ Sentence
+   ds-card-title  │ 20px (xl)  │ 18px    │ bold       │ Sentence
+   ds-label       │ 12px (xs)  │ 12px    │ medium     │ UPPERCASE ← only level that is uppercase
+   ds-body-lg     │ 18px (lg)  │ 18px    │ normal     │ Sentence
+   ds-body        │ 15px       │ 15px    │ normal     │ Sentence
+   ds-caption     │ 12px (xs)  │ 12px    │ medium     │ Sentence
+
+   CASING RULES
+   • uppercase CSS class: ONLY on ds-label (eyebrow text above headings)
+   • All headings, buttons, body text: sentence/title case — NO uppercase class
+   • Button text: title case ("Get My Free Audit", not "GET MY FREE AUDIT")
+
+   COLOR ROLES
+   ────────────────────────────────────────────
+   Color              │ Role              │ Where
+   ────────────────────────────────────────────
+   Yellow #F5C518     │ Primary CTA       │ ALL action buttons
+   Orange accent-500  │ Highlight accent  │ Hero text, badges, tags — NEVER buttons
+   Dark concrete-900  │ Secondary CTA     │ Outline/ghost buttons (low priority actions)
+   ────────────────────────────────────────────
+
+   BACKGROUND RULES
+   • NO dark section backgrounds — site is light-themed
+   • Section bgs: white, concrete-50, primary-50, or #F5C518 (yellow accent)
+   • Dark bgs ONLY on: phone mockup frames, cards inside yellow sections
+   • Buttons on yellow bg: use bg-concrete-900 text-white (can't do yellow-on-yellow)
+
+   TEXT COLOR RULES
+   • Headlines: text-concrete-900
+   • Body: text-concrete-600
+   • Muted/captions: text-concrete-400
+   • Section labels: text-primary-500
+   • NEVER use raw text-[#1A1E24] — use text-concrete-900 (same value)
+
+   FONT FAMILY
+   • All headings: font-heading (Plus Jakarta Sans) — always explicit
+   • Body: font-body (DM Sans) — inherited from body
+   • Mono: font-mono (JetBrains Mono) — for stats/numbers
+
+   SECTION SPACING
+   • Standard: py-20 md:py-28
+   • Container: max-w-[1200px] mx-auto px-6
+
+   ═══════════════════════════════════════════════ */
+
+@layer components {
+  /* ── Typography ── */
+
+  .ds-hero {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+  @media (min-width: 640px) {
+    .ds-hero { font-size: 60px; }
+  }
+  @media (min-width: 1024px) {
+    .ds-hero { font-size: 72px; }
+  }
+
+  .ds-page-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+  @media (min-width: 768px) {
+    .ds-page-title { font-size: 56px; }
+  }
+
+  .ds-section {
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  @media (min-width: 768px) {
+    .ds-section { font-size: 40px; }
+  }
+
+  .ds-card-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  @media (min-width: 768px) {
+    .ds-card-title { font-size: 20px; }
+  }
+
+  .ds-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-concrete-400);
+  }
+
+  .ds-body-lg {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-concrete-600);
+  }
+
+  .ds-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-concrete-600);
+  }
+
+  .ds-caption {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-concrete-400);
+  }
+
+  /* ── Buttons ── */
+
+  .ds-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-cta);
+    color: var(--color-concrete-900);
+    font-weight: 700;
+    font-size: 18px;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ds-btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(245, 197, 24, 0.4);
+  }
+
+  /* Secondary: outline/ghost — for lower-priority actions */
+  .ds-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--color-concrete-900);
+    font-weight: 700;
+    font-size: 18px;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    border: 2px solid var(--color-concrete-900);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .ds-btn-secondary:hover {
+    background-color: var(--color-concrete-900);
+    color: #FFFFFF;
+  }
+
+  /* Dark variant: ONLY for buttons on yellow backgrounds */
+  .ds-btn-on-yellow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-concrete-900);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ds-btn-on-yellow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(26, 30, 36, 0.3);
+  }
+
+  /* ── Section Container ── */
+
+  .ds-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }

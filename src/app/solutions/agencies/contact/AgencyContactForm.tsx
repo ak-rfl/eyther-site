@@ -190,8 +190,9 @@ export default function AgencyContactForm() {
       console.log("Agency contact form submitted:", formData);
       setIsSuccess(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch {
-      // Handle error silently for now
+    } catch (error) {
+      console.error("Agency contact form submission failed:", error);
+      alert("Something went wrong. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -474,7 +475,7 @@ export default function AgencyContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-accent-500 text-white font-semibold text-[17px] px-7 py-4 rounded-[10px] hover:bg-accent-600 transition-colors shadow-[0_2px_12px_rgba(232,86,15,0.3)] hover:shadow-[0_4px_20px_rgba(232,86,15,0.4)] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full bg-cta text-concrete-900 font-bold text-[17px] px-7 py-4 rounded-full hover:scale-105 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
             <>
