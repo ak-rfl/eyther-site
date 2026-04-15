@@ -25,7 +25,7 @@ export default function BlogPage() {
                 Marketing insights for contractors who&apos;d rather be on the
                 job site
               </h1>
-              <div className="w-16 h-1 bg-[#F5C518] rounded-full mx-auto mt-4 mb-6" />
+              <div className="w-16 h-1 bg-cta rounded-full mx-auto mt-4 mb-6" />
               <p className="text-lg text-concrete-600 leading-relaxed">
                 Real strategies, real numbers, and honest advice for home
                 services businesses. No marketing jargon, no fluff — just what
@@ -44,7 +44,7 @@ export default function BlogPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-[#F5C518] py-16 md:py-20">
+      <section className="bg-cta py-16 md:py-20">
         <div className="max-w-[700px] mx-auto px-6 text-center">
           <FadeIn>
             <h2 className="font-heading text-3xl md:text-[40px] text-concrete-900 font-extrabold tracking-tight mb-8 leading-tight">

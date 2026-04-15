@@ -58,7 +58,7 @@ export default function AuditForm() {
 
               <Link
                 href="/audit"
-                className="w-full bg-[#F5C518] text-concrete-900 font-bold text-[17px] py-4 rounded-full hover:scale-105 transition-all flex items-center justify-center gap-2"
+                className="w-full bg-cta text-concrete-900 font-bold text-[17px] py-4 rounded-full hover:scale-105 transition-all flex items-center justify-center gap-2"
               >
                 Get My Free Marketing Audit
                 <svg

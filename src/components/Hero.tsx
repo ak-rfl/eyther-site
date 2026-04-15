@@ -42,7 +42,7 @@ export default function Hero() {
           >
             <a
               href="/audit"
-              className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold text-lg px-10 py-4 rounded-full transition-transform duration-200 hover:scale-105"
+              className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold text-lg px-10 py-4 rounded-full transition-transform duration-200 hover:scale-105"
             >
               Get My Free Marketing Audit
             </a>

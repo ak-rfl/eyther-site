@@ -62,7 +62,7 @@ export default function ContractorPain() {
                     className={`hidden md:block ${bubble.className}`}
                     style={{ maxWidth: "280px" }}
                   >
-                    <div className="bg-[#F5C518] rounded-lg px-4 py-2.5 shadow-md">
+                    <div className="bg-cta rounded-lg px-4 py-2.5 shadow-md">
                       <p className="text-black text-sm font-bold leading-snug">
                         &ldquo;{bubble.text}&rdquo;
                       </p>
@@ -77,7 +77,7 @@ export default function ContractorPain() {
               {bubbles.map((bubble, i) => (
                 <FadeIn key={`m-${i}`} delay={0.2 + i * 0.1}>
                   <div
-                    className={`bg-[#F5C518] rounded-lg px-4 py-2.5 shadow-md ${
+                    className={`bg-cta rounded-lg px-4 py-2.5 shadow-md ${
                       i % 2 === 0 ? "rotate-1" : "-rotate-1"
                     }`}
                   >
@@ -100,7 +100,7 @@ export default function ContractorPain() {
 
         {/* Yellow divider */}
         <FadeIn delay={0.6}>
-          <div className="h-1 w-24 mx-auto bg-[#F5C518] rounded-full mt-8" />
+          <div className="h-1 w-24 mx-auto bg-cta rounded-full mt-8" />
         </FadeIn>
       </div>
     </section>

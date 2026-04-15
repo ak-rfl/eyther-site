@@ -57,7 +57,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   return (
     <div className="flex gap-4 overflow-hidden">
       <div
-        className={`flex gap-4 shrink-0 animate-[${direction}_30s_linear_infinite]`}
+        className="flex gap-4 shrink-0"
         style={{
           animation: `${direction} 30s linear infinite`,
         }}
@@ -85,18 +85,6 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 export default function AITeamMarquee() {
   return (
     <section className="w-full overflow-hidden py-16 relative">
-      {/* CSS keyframes */}
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes marquee-reverse {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-      `}</style>
-
       {/* Gradient fade overlays */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-white to-transparent" />

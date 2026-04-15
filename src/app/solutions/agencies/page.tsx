@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link"; // eslint-disable-line @typescript-eslint/no-unused-vars
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import CountUp from "@/components/CountUp";
-import InlineCTA from "@/components/InlineCTA"; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { agencyPage } from "@/data/solutions-agency";
 
 /* ═══════════════════════════════════════════════
@@ -53,7 +51,7 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
         {/* Screen content */}
         {children}
         {/* Home indicator */}
-        <div className="bg-[#12151A] pb-3 pt-2 flex justify-center">
+        <div className="bg-phone-dark pb-3 pt-2 flex justify-center">
           <div className="w-[100px] h-1 rounded-full bg-white/20" />
         </div>
       </div>
@@ -89,7 +87,7 @@ export default function AgencySolutionPage() {
               <FadeIn delay={0.15}>
                 <a
                   href={hero.cta.href}
-                  className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
+                  className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
                 >
                   {hero.cta.text}
                   <svg
@@ -128,14 +126,14 @@ export default function AgencySolutionPage() {
             {/* Right — phone mockup: Agency Dashboard */}
             <FadeIn delay={0.3}>
               <PhoneFrame>
-                <div className="bg-[#12151A] p-5">
+                <div className="bg-phone-dark p-5">
                   {/* App header */}
                   <div className="flex items-center justify-between mb-5">
                     <div>
                       <p className="text-white font-bold text-base">homeAI</p>
                       <p className="text-white/40 text-[11px]">Agency Dashboard</p>
                     </div>
-                    <div className="bg-[#F5C518]/20 text-[#F5C518] text-[11px] font-bold px-3 py-1 rounded-full">
+                    <div className="bg-cta/20 text-cta text-[11px] font-bold px-3 py-1 rounded-full">
                       3 clients active
                     </div>
                   </div>
@@ -154,7 +152,7 @@ export default function AgencySolutionPage() {
                     <div className="grid grid-cols-2 gap-2">
                       <div className="bg-white/[0.05] rounded-lg px-3 py-2">
                         <p className="text-white/40 text-[9px] uppercase tracking-wider mb-0.5">Campaign</p>
-                        <p className="text-[#F5C518] text-sm font-bold">+34%</p>
+                        <p className="text-cta text-sm font-bold">+34%</p>
                       </div>
                       <div className="bg-white/[0.05] rounded-lg px-3 py-2">
                         <p className="text-white/40 text-[9px] uppercase tracking-wider mb-0.5">Reviews</p>
@@ -177,7 +175,7 @@ export default function AgencySolutionPage() {
                     <div className="grid grid-cols-2 gap-2">
                       <div className="bg-white/[0.05] rounded-lg px-3 py-2">
                         <p className="text-white/40 text-[9px] uppercase tracking-wider mb-0.5">Campaign</p>
-                        <p className="text-[#F5C518] text-sm font-bold">+21%</p>
+                        <p className="text-cta text-sm font-bold">+21%</p>
                       </div>
                       <div className="bg-white/[0.05] rounded-lg px-3 py-2">
                         <p className="text-white/40 text-[9px] uppercase tracking-wider mb-0.5">Reviews</p>
@@ -187,8 +185,8 @@ export default function AgencySolutionPage() {
                   </div>
 
                   {/* Insight card */}
-                  <div className="bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-xl p-3">
-                    <p className="text-[#F5C518] text-[10px] uppercase tracking-wider font-bold mb-1">Agent Insight</p>
+                  <div className="bg-cta/10 border border-cta/20 rounded-xl p-3">
+                    <p className="text-cta text-[10px] uppercase tracking-wider font-bold mb-1">Agent Insight</p>
                     <p className="text-white text-[12px] leading-relaxed">
                       &ldquo;Competitor launched $49 drain deal. Suggest countering with free inspection offer&mdash;converted 3x better last spring.&rdquo;
                     </p>
@@ -202,7 +200,7 @@ export default function AgencySolutionPage() {
 
       {/* ─── 2. TRUST BADGES ─── light gray strip */}
       <FadeIn>
-        <div className="bg-[#F7F8FA] py-8 border-y border-concrete-100">
+        <div className="bg-concrete-50 py-8 border-y border-concrete-100">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
               {trustBadges.map((badge, i) => (
@@ -256,7 +254,7 @@ export default function AgencySolutionPage() {
       </section>
 
       {/* ─── 4. AGENT LOOP / HOW IT WORKS ─── yellow section, simplified */}
-      <section id="how-it-works" className="bg-[#F5C518] py-20 md:py-28">
+      <section id="how-it-works" className="bg-cta py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
             <div className="text-concrete-900/60 text-xs font-medium tracking-[2px] uppercase flex items-center gap-2 mb-4 justify-center">
@@ -275,7 +273,7 @@ export default function AgencySolutionPage() {
             {agentLoop.steps.map((step, i) => (
               <FadeIn key={i} delay={0.1 * i}>
                 <div className="bg-concrete-900 rounded-xl p-6 h-full hover:-translate-y-1 transition-transform">
-                  <div className="w-10 h-10 rounded-full bg-[#F5C518] text-concrete-900 font-extrabold text-sm flex items-center justify-center mb-5">
+                  <div className="w-10 h-10 rounded-full bg-cta text-concrete-900 font-extrabold text-sm flex items-center justify-center mb-5">
                     {i + 1}
                   </div>
                   <h3 className="font-heading text-lg font-bold text-white mb-2">
@@ -339,7 +337,7 @@ export default function AgencySolutionPage() {
             {/* Right — phone mockup: Agent Activity Feed */}
             <FadeIn delay={0.3}>
               <PhoneFrame>
-                <div className="bg-[#12151A] p-5">
+                <div className="bg-phone-dark p-5">
                   {/* App header */}
                   <div className="flex items-center justify-between mb-5">
                     <div>
@@ -464,7 +462,7 @@ export default function AgencySolutionPage() {
       </section>
 
       {/* ─── 7. INTEGRATIONS / STACK ─── light bg */}
-      <section className="bg-[#F7F8FA] py-16">
+      <section className="bg-concrete-50 py-16">
         <div className="max-w-[1200px] mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-12">
@@ -487,10 +485,10 @@ export default function AgencySolutionPage() {
               {stack.integrations.map((integration, i) => (
                 <div
                   key={i}
-                  className="inline-flex items-center gap-2 bg-white border border-concrete-200 rounded-full px-5 py-2.5 text-sm font-semibold text-concrete-900 hover:border-[#F5C518] hover:shadow-sm transition-all cursor-default"
+                  className="inline-flex items-center gap-2 bg-white border border-concrete-200 rounded-full px-5 py-2.5 text-sm font-semibold text-concrete-900 hover:border-cta hover:shadow-sm transition-all cursor-default"
                   title={integration.description}
                 >
-                  <div className="w-2 h-2 rounded-full bg-[#F5C518]" />
+                  <div className="w-2 h-2 rounded-full bg-cta" />
                   {integration.name}
                 </div>
               ))}
@@ -521,7 +519,7 @@ export default function AgencySolutionPage() {
             <ul className="space-y-5 mb-12">
               {partnership.details.map((detail, i) => (
                 <li key={i} className="flex items-start gap-4">
-                  <div className="shrink-0 w-6 h-6 rounded-full bg-[#F5C518] flex items-center justify-center mt-0.5">
+                  <div className="shrink-0 w-6 h-6 rounded-full bg-cta flex items-center justify-center mt-0.5">
                     <svg
                       className="w-3.5 h-3.5 text-concrete-900"
                       viewBox="0 0 24 24"
@@ -546,7 +544,7 @@ export default function AgencySolutionPage() {
             <div className="text-center">
               <a
                 href={partnership.cta.href}
-                className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
+                className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
               >
                 {partnership.cta.text}
                 <svg
@@ -639,7 +637,7 @@ export default function AgencySolutionPage() {
       </section>
 
       {/* ─── 10. FINAL CTA ─── yellow section */}
-      <section className="bg-[#F5C518] py-20 md:py-28">
+      <section className="bg-cta py-20 md:py-28">
         <div className="max-w-[800px] mx-auto px-6 text-center">
           <FadeIn>
             <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 leading-tight mb-5">

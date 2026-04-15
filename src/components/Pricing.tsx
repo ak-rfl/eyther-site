@@ -122,7 +122,7 @@ export default function Pricing() {
                   href="/audit"
                   className={`w-full text-center font-medium py-3.5 rounded-[10px] transition-colors ${
                     t.featured
-                      ? "bg-[#F5C518] text-concrete-900 hover:scale-105 shadow-[0_4px_20px_rgba(245,197,24,0.3)]"
+                      ? "bg-cta text-concrete-900 hover:scale-105 shadow-[0_4px_20px_rgba(245,197,24,0.3)]"
                       : "border-2 border-primary-500 text-primary-500 hover:bg-primary-50"
                   }`}
                 >

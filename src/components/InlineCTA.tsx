@@ -17,7 +17,7 @@ export default function InlineCTA({
     <FadeIn>
       <div
         className={`py-12 ${
-          dark ? "bg-concrete-50" : "bg-[#F5C518]/10"
+          dark ? "bg-concrete-50" : "bg-cta/10"
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -30,11 +30,7 @@ export default function InlineCTA({
           </p>
           <a
             href={href}
-            className={`font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-all whitespace-nowrap shrink-0 ${
-              dark
-                ? "bg-[#F5C518] text-concrete-900"
-                : "bg-[#F5C518] text-concrete-900"
-            }`}
+            className="font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-all whitespace-nowrap shrink-0 bg-cta text-concrete-900"
           >
             {buttonText}
           </a>

@@ -136,15 +136,15 @@ function FAQAccordion({
 function PhoneMockup({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-concrete-900 rounded-[40px] p-3 shadow-[0_20px_60px_rgba(26,30,36,0.35)]">
-      <div className="bg-[#12151A] rounded-[32px] overflow-hidden">
+      <div className="bg-phone-dark rounded-[32px] overflow-hidden">
         {/* Notch */}
-        <div className="flex justify-center pt-3 pb-1 bg-[#12151A]">
+        <div className="flex justify-center pt-3 pb-1 bg-phone-dark">
           <div className="w-[100px] h-[28px] bg-concrete-900 rounded-full" />
         </div>
         {/* Screen content */}
         {children}
         {/* Home indicator */}
-        <div className="pb-4 pt-2 flex justify-center bg-[#12151A]">
+        <div className="pb-4 pt-2 flex justify-center bg-phone-dark">
           <div className="w-[100px] h-1 rounded-full bg-white/20" />
         </div>
       </div>
@@ -182,7 +182,7 @@ export default function EnterprisePage() {
               <FadeIn delay={0.15}>
                 <Link
                   href={hero.cta.href}
-                  className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
+                  className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-[0_4px_20px_rgba(245,197,24,0.4)] transition-all"
                 >
                   {hero.cta.text}
                   <svg
@@ -250,8 +250,8 @@ export default function EnterprisePage() {
                     </div>
 
                     {/* Insight card */}
-                    <div className="bg-[#F5C518]/15 border border-[#F5C518]/25 rounded-lg p-4 mb-4">
-                      <p className="text-[#F5C518] text-[10px] uppercase tracking-wider font-semibold mb-1.5">Network Alert</p>
+                    <div className="bg-cta/15 border border-cta/25 rounded-lg p-4 mb-4">
+                      <p className="text-cta text-[10px] uppercase tracking-wider font-semibold mb-1.5">Network Alert</p>
                       <p className="text-white text-[12px] leading-relaxed">
                         Phoenix drain cleaning tactic outperforming by 40%. Auto-propagating to 12 similar markets.
                       </p>
@@ -262,7 +262,7 @@ export default function EnterprisePage() {
                       <p className="text-white/40 text-[10px] uppercase tracking-wider">Network Health</p>
                       {[
                         { label: "Budget utilization", pct: 87, color: "bg-emerald-400" },
-                        { label: "Lead quality score", pct: 92, color: "bg-[#F5C518]" },
+                        { label: "Lead quality score", pct: 92, color: "bg-cta" },
                         { label: "Brand compliance", pct: 96, color: "bg-blue-400" },
                       ].map((bar, i) => (
                         <div key={i}>
@@ -286,7 +286,7 @@ export default function EnterprisePage() {
 
       {/* ─── 2. TRUST BADGES — light gray ─── */}
       <FadeIn>
-        <div className="bg-[#F7F8FA] py-8 border-y border-concrete-100">
+        <div className="bg-concrete-50 py-8 border-y border-concrete-100">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
               {trustBadges.map((badge, i) => (
@@ -340,7 +340,7 @@ export default function EnterprisePage() {
       </section>
 
       {/* ─── 4. HOW IT CHANGES — yellow section, split layout ─── */}
-      <section className="bg-[#F5C518] py-20 md:py-28">
+      <section className="bg-cta py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — text + bullet cards */}
@@ -363,7 +363,7 @@ export default function EnterprisePage() {
                   <FadeIn key={i} delay={0.1 * i}>
                     <div className="bg-concrete-900 rounded-xl p-5 hover:-translate-y-1 transition-all duration-300">
                       <div className="flex items-start gap-4">
-                        <div className="shrink-0 w-9 h-9 rounded-full bg-[#F5C518] flex items-center justify-center">
+                        <div className="shrink-0 w-9 h-9 rounded-full bg-cta flex items-center justify-center">
                           <span className="font-heading font-extrabold text-concrete-900 text-xs">
                             {String(i + 1).padStart(2, "0")}
                           </span>
@@ -392,7 +392,7 @@ export default function EnterprisePage() {
                     <div className="mb-5">
                       <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Location Intelligence</p>
                       <p className="text-white font-bold text-lg flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#F5C518]" viewBox="0 0 24 24" fill="currentColor">
+                        <svg className="w-4 h-4 text-cta" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                         </svg>
                         Phoenix, AZ
@@ -427,10 +427,10 @@ export default function EnterprisePage() {
                     <div className="bg-white/[0.06] rounded-lg p-3">
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-white/50 text-[11px]">Agent confidence</span>
-                        <span className="text-[#F5C518] text-[11px] font-bold">94%</span>
+                        <span className="text-cta text-[11px] font-bold">94%</span>
                       </div>
                       <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                        <div className="w-[94%] h-full bg-[#F5C518] rounded-full" />
+                        <div className="w-[94%] h-full bg-cta rounded-full" />
                       </div>
                     </div>
                   </div>
@@ -558,10 +558,10 @@ export default function EnterprisePage() {
               {integrationSecurity.items.map((item, i) => (
                 <div
                   key={i}
-                  className="inline-flex items-center gap-2 bg-white border border-concrete-200 rounded-full px-5 py-2.5 text-sm font-semibold text-concrete-900 hover:border-[#F5C518] hover:shadow-sm transition-all duration-200 cursor-default"
+                  className="inline-flex items-center gap-2 bg-white border border-concrete-200 rounded-full px-5 py-2.5 text-sm font-semibold text-concrete-900 hover:border-cta hover:shadow-sm transition-all duration-200 cursor-default"
                   title={item.description}
                 >
-                  <div className="w-2 h-2 rounded-full bg-[#F5C518]" />
+                  <div className="w-2 h-2 rounded-full bg-cta" />
                   {item.name}
                 </div>
               ))}
@@ -588,9 +588,9 @@ export default function EnterprisePage() {
 
           <FadeIn delay={0.1}>
             <div className="max-w-[520px] mx-auto mb-10">
-              {pricing.detail.split(". ").map((sentence, i) => (
+              {pricing.detail.split(". ").filter(s => s.trim().length > 0).map((sentence, i) => (
                 <div key={i} className="flex items-start gap-3 mb-4 text-left">
-                  <div className="shrink-0 w-6 h-6 rounded-full bg-[#F5C518] flex items-center justify-center mt-0.5">
+                  <div className="shrink-0 w-6 h-6 rounded-full bg-cta flex items-center justify-center mt-0.5">
                     <svg
                       className="w-3.5 h-3.5 text-concrete-900"
                       viewBox="0 0 20 20"
@@ -615,7 +615,7 @@ export default function EnterprisePage() {
           <FadeIn delay={0.2}>
             <Link
               href={pricing.cta.href}
-              className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-lg transition-all duration-200"
+              className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold rounded-full px-10 py-4 text-lg hover:scale-105 hover:shadow-lg transition-all duration-200"
             >
               {pricing.cta.text}
               <svg
@@ -653,7 +653,7 @@ export default function EnterprisePage() {
       </section>
 
       {/* ─── 10. FINAL CTA — yellow section ─── */}
-      <section className="bg-[#F5C518] py-20 md:py-28">
+      <section className="bg-cta py-20 md:py-28">
         <div className="max-w-[900px] mx-auto px-6 text-center">
           <FadeIn>
             <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 leading-tight mb-5">

@@ -163,7 +163,7 @@ export default function Nav() {
           </a>
           <a
             href="/audit"
-            className="bg-[#F5C518] text-concrete-900 text-sm font-bold px-5 py-2.5 rounded-full hover:scale-105 transition-all"
+            className="bg-cta text-concrete-900 text-sm font-bold px-5 py-2.5 rounded-full hover:scale-105 transition-all"
           >
             Get My Free Audit
           </a>
@@ -297,7 +297,7 @@ export default function Nav() {
           </a>
           <a
             href="/audit"
-            className="bg-[#F5C518] text-concrete-900 text-center font-bold px-6 py-3.5 rounded-full mt-2"
+            className="bg-cta text-concrete-900 text-center font-bold px-6 py-3.5 rounded-full mt-2"
             onClick={() => setMobileOpen(false)}
           >
             Get My Free Audit

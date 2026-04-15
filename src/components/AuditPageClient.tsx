@@ -476,8 +476,9 @@ export default function AuditPageClient() {
       });
       setIsSuccess(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch {
-      // Handle error silently for now
+    } catch (error) {
+      console.error("Audit form submission failed:", error);
+      alert("Something went wrong. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -492,7 +493,7 @@ export default function AuditPageClient() {
   const fieldPadding = "px-4";
   const fieldText = "text-base text-concrete-900 placeholder:text-concrete-400";
   const fieldFocus =
-    "focus:outline-none focus:border-[#F5C518] focus:ring-[#F5C518] focus:shadow-[0_0_0_3px_rgba(245,197,24,0.15)]";
+    "focus:outline-none focus:border-cta focus:ring-cta focus:shadow-[0_0_0_3px_rgba(245,197,24,0.15)]";
   const fieldTransition = "transition-all";
 
   function borderColor(field: string) {
@@ -594,7 +595,7 @@ export default function AuditPageClient() {
         >
           <div className="bg-white rounded-2xl shadow-lg border border-concrete-100 p-8 md:p-12 text-center">
             {/* Success icon */}
-            <div className="w-20 h-20 bg-[#F5C518] rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 bg-cta rounded-full flex items-center justify-center mx-auto mb-6">
               <motion.svg
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -635,7 +636,7 @@ export default function AuditPageClient() {
                     key={item}
                     className="flex items-center gap-3 text-[15px] text-concrete-700"
                   >
-                    <div className="shrink-0 w-6 h-6 rounded-full bg-[#F5C518]/20 flex items-center justify-center">
+                    <div className="shrink-0 w-6 h-6 rounded-full bg-cta/20 flex items-center justify-center">
                       <svg
                         className="w-3.5 h-3.5 text-concrete-900"
                         viewBox="0 0 24 24"
@@ -668,7 +669,7 @@ export default function AuditPageClient() {
 
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-concrete-900 font-medium hover:text-[#F5C518] transition-colors"
+              className="inline-flex items-center gap-2 text-concrete-900 font-medium hover:text-cta transition-colors"
             >
               <svg
                 className="w-4 h-4"
@@ -710,7 +711,7 @@ export default function AuditPageClient() {
                 key={i}
                 className={`h-2 flex-1 rounded-full transition-all duration-500 ${
                   i < currentStep
-                    ? "bg-[#F5C518]"
+                    ? "bg-cta"
                     : "bg-concrete-200"
                 }`}
               />
@@ -734,7 +735,7 @@ export default function AuditPageClient() {
               <h1 className="font-heading text-4xl md:text-[56px] font-extrabold tracking-tight leading-[1.08] text-concrete-900 mb-2">
                 {STEP_CONFIG[currentStep - 1].headline}
               </h1>
-              <div className="w-16 h-1 bg-[#F5C518] rounded-full mx-auto mt-4 mb-6" />
+              <div className="w-16 h-1 bg-cta rounded-full mx-auto mt-4 mb-6" />
               <p className="text-base text-concrete-500 leading-relaxed">
                 {STEP_CONFIG[currentStep - 1].subtext}
               </p>
@@ -1086,7 +1087,7 @@ export default function AuditPageClient() {
                         }
                         className={`${fieldHeight} rounded-lg ${fieldBorder} font-medium text-sm ${fieldTransition} ${
                           formData.nextdoorPresence === true
-                            ? "border-[#F5C518] bg-[#F5C518]/10 text-concrete-900"
+                            ? "border-cta bg-cta/10 text-concrete-900"
                             : "border-concrete-200 text-concrete-600 hover:border-concrete-400"
                         }`}
                       >
@@ -1102,7 +1103,7 @@ export default function AuditPageClient() {
                         }
                         className={`${fieldHeight} rounded-lg ${fieldBorder} font-medium text-sm ${fieldTransition} ${
                           formData.nextdoorPresence === false
-                            ? "border-[#F5C518] bg-[#F5C518]/10 text-concrete-900"
+                            ? "border-cta bg-cta/10 text-concrete-900"
                             : "border-concrete-200 text-concrete-600 hover:border-concrete-400"
                         }`}
                       >
@@ -1152,14 +1153,14 @@ export default function AuditPageClient() {
                           onClick={() => toggleChannel(channel)}
                           className={`flex items-center gap-3 ${fieldPadding} py-3.5 rounded-lg ${fieldBorder} text-left text-sm font-medium ${fieldTransition} ${
                             formData.currentChannels.includes(channel)
-                              ? "border-[#F5C518] bg-[#F5C518]/10 text-concrete-900"
+                              ? "border-cta bg-cta/10 text-concrete-900"
                               : "border-concrete-200 text-concrete-600 hover:border-concrete-400"
                           }`}
                         >
                           <div
                             className={`shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center ${fieldTransition} ${
                               formData.currentChannels.includes(channel)
-                                ? "border-[#F5C518] bg-[#F5C518]"
+                                ? "border-cta bg-cta"
                                 : "border-concrete-300"
                             }`}
                           >
@@ -1276,7 +1277,7 @@ export default function AuditPageClient() {
                       onClick={() => logoInputRef.current?.click()}
                       className={`w-full relative flex flex-col items-center justify-center gap-2 ${fieldBorder} border-dashed rounded-lg py-8 ${fieldPadding} cursor-pointer ${fieldTransition} ${
                         logoDragActive
-                          ? "border-[#F5C518] bg-[#F5C518]/10"
+                          ? "border-cta bg-cta/10"
                           : "border-concrete-200 hover:border-concrete-400 bg-concrete-50"
                       }`}
                     >
@@ -1336,7 +1337,7 @@ export default function AuditPageClient() {
                           </svg>
                           <span className="text-sm text-concrete-500">
                             Drag & drop your logo, or{" "}
-                            <span className="text-[#F5C518] font-medium">
+                            <span className="text-primary-500 font-medium">
                               click to browse
                             </span>
                           </span>
@@ -1363,7 +1364,7 @@ export default function AuditPageClient() {
                       onClick={() => materialsInputRef.current?.click()}
                       className={`w-full relative flex flex-col items-center justify-center gap-2 ${fieldBorder} border-dashed rounded-lg py-8 ${fieldPadding} cursor-pointer ${fieldTransition} ${
                         materialsDragActive
-                          ? "border-[#F5C518] bg-[#F5C518]/10"
+                          ? "border-cta bg-cta/10"
                           : "border-concrete-200 hover:border-concrete-400 bg-concrete-50"
                       }`}
                     >
@@ -1388,7 +1389,7 @@ export default function AuditPageClient() {
                       </svg>
                       <span className="text-sm text-concrete-500">
                         Drag & drop files, or{" "}
-                        <span className="text-[#F5C518] font-medium">
+                        <span className="text-primary-500 font-medium">
                           click to browse
                         </span>
                       </span>
@@ -1467,7 +1468,7 @@ export default function AuditPageClient() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="bg-[#F5C518] text-concrete-900 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-transform flex items-center gap-2"
+                  className="bg-cta text-concrete-900 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-transform flex items-center gap-2"
                 >
                   Continue
                   <svg
@@ -1486,7 +1487,7 @@ export default function AuditPageClient() {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="bg-[#F5C518] text-concrete-900 font-bold text-lg px-10 py-4 rounded-full hover:scale-105 transition-transform flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="bg-cta text-concrete-900 font-bold text-lg px-10 py-4 rounded-full hover:scale-105 transition-transform flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

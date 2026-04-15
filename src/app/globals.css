@@ -33,6 +33,12 @@
   --color-concrete-700: #3D434D;
   --color-concrete-900: #1A1E24;
 
+  /* CTA Yellow */
+  --color-cta: #F5C518;
+
+  /* Phone Mockup Dark */
+  --color-phone-dark: #12151A;
+
   /* Semantic */
   --color-success: #1B9E5C;
   --color-warning: #D4901A;
@@ -64,6 +70,16 @@ h1, h2, h3, h4, h5, h6 {
 /* ═══════════════════════════════════════════════
    ANIMATIONS
    ═══════════════════════════════════════════════ */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(27, 158, 92, 0.4); }
   50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(27, 158, 92, 0); }
@@ -215,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #F5C518;
+    background-color: var(--color-cta);
     color: var(--color-concrete-900);
     font-weight: 700;
     font-size: 18px;

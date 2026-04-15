@@ -2,7 +2,7 @@ import FadeIn from "./FadeIn";
 
 function AlexAvatar({ bg }: { bg: string }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="40" cy="40" r="40" fill={bg} />
       <circle cx="40" cy="40" r="36" fill="white" opacity="0.15" />
       {/* Head */}
@@ -30,7 +30,7 @@ function AlexAvatar({ bg }: { bg: string }) {
 
 function MayaAvatar({ bg }: { bg: string }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="40" cy="40" r="40" fill={bg} />
       <circle cx="40" cy="40" r="36" fill="white" opacity="0.15" />
       {/* Head */}
@@ -62,7 +62,7 @@ function MayaAvatar({ bg }: { bg: string }) {
 
 function SamAvatar({ bg }: { bg: string }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="40" cy="40" r="40" fill={bg} />
       <circle cx="40" cy="40" r="36" fill="white" opacity="0.15" />
       {/* Head */}
@@ -92,7 +92,7 @@ function SamAvatar({ bg }: { bg: string }) {
 
 function NoorAvatar({ bg }: { bg: string }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="40" cy="40" r="40" fill={bg} />
       <circle cx="40" cy="40" r="36" fill="white" opacity="0.15" />
       {/* Head */}
@@ -121,7 +121,7 @@ function NoorAvatar({ bg }: { bg: string }) {
 
 function JordanAvatar({ bg }: { bg: string }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="40" cy="40" r="40" fill={bg} />
       <circle cx="40" cy="40" r="36" fill="white" opacity="0.15" />
       {/* Head */}
@@ -151,7 +151,7 @@ function JordanAvatar({ bg }: { bg: string }) {
 
 function CaseyAvatar({ bg }: { bg: string }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="40" cy="40" r="40" fill={bg} />
       <circle cx="40" cy="40" r="36" fill="white" opacity="0.15" />
       {/* Head */}
@@ -236,7 +236,7 @@ const team = [
 
 export default function MeetTheTeam() {
   return (
-    <section className="bg-[#F5C518] py-20 md:py-28" id="ai-team">
+    <section className="bg-cta py-20 md:py-28" id="ai-team">
       <div className="max-w-[1200px] mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
@@ -253,6 +253,7 @@ export default function MeetTheTeam() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {team.map((member, i) => {
             const AvatarComponent = avatarComponents[member.name];
+            if (!AvatarComponent) return null;
             return (
               <FadeIn key={member.role} delay={0.08 * i}>
                 <div

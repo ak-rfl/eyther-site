@@ -153,7 +153,7 @@ export default async function BlogPostPage({
             {/* Gradient Cover Image */}
             <FadeIn delay={0.1}>
               <div
-                className={`w-full h-56 md:h-72 rounded-xl bg-gradient-to-br ${categoryColors[post.category]} mb-10 relative overflow-hidden border-b-4 border-[#F5C518]`}
+                className={`w-full h-56 md:h-72 rounded-xl bg-gradient-to-br ${categoryColors[post.category]} mb-10 relative overflow-hidden border-b-4 border-cta`}
               >
                 <div className="absolute inset-0 bg-black/5" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -184,12 +184,12 @@ export default async function BlogPostPage({
       </article>
 
       {/* CTA Section */}
-      <section className="bg-[#F5C518] py-14 md:py-18">
+      <section className="bg-cta py-14 md:py-18">
         <div className="max-w-[600px] mx-auto px-6 text-center">
           <FadeIn>
             <h2 className="font-heading text-3xl md:text-[40px] font-extrabold text-concrete-900 tracking-tight mb-7 leading-tight">
               See how homeAI can help your{" "}
-              {categoryCtaCopy[post.category]} business
+              {categoryCtaCopy[post.category] ?? "home services"} business
             </h2>
             <a
               href="/audit"
@@ -209,7 +209,7 @@ export default async function BlogPostPage({
               <h2 className="font-heading text-3xl md:text-[40px] font-extrabold text-concrete-900 text-center tracking-tight">
                 Keep Reading
               </h2>
-              <div className="w-12 h-1 bg-[#F5C518] rounded-full mx-auto mt-3 mb-8" />
+              <div className="w-12 h-1 bg-cta rounded-full mx-auto mt-3 mb-8" />
             </FadeIn>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

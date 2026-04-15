@@ -574,7 +574,7 @@ export default async function TradePage({
             <FadeIn delay={0.2}>
               <a
                 href="/audit"
-                className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform"
+                className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform"
               >
                 {data.ctaLabel}
                 <svg
@@ -618,9 +618,9 @@ export default async function TradePage({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {data.problems.map((problem, i) => (
               <FadeIn key={i} delay={0.1 * i}>
-                <div className="group bg-white border-l-4 border-[#F5C518] border border-concrete-200 shadow-sm rounded-xl p-7 h-full hover:shadow-md transition-all">
+                <div className="group bg-white border-l-4 border-cta border border-concrete-200 shadow-sm rounded-xl p-7 h-full hover:shadow-md transition-all">
                   {/* Problem number */}
-                  <div className="w-10 h-10 rounded-lg bg-[#F5C518]/15 text-[#F5C518] font-heading font-bold text-sm flex items-center justify-center mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-cta/15 text-concrete-900 font-heading font-bold text-sm flex items-center justify-center mb-5">
                     0{i + 1}
                   </div>
                   <h3 className="font-heading text-lg font-bold text-concrete-900 mb-3">
@@ -711,7 +711,7 @@ export default async function TradePage({
                       duration={2}
                     />
                   </div>
-                  <div className="w-12 h-1 bg-[#F5C518] rounded-full mx-auto mt-2" />
+                  <div className="w-12 h-1 bg-cta rounded-full mx-auto mt-2" />
                   <p className="text-sm text-concrete-600 font-medium mt-3">
                     {stat.label}
                   </p>
@@ -747,7 +747,7 @@ export default async function TradePage({
                 <div className="relative flex gap-6 md:gap-8">
                   {/* Timeline line + dot */}
                   <div className="flex flex-col items-center">
-                    <div className="bg-[#F5C518] text-concrete-900 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0 z-10">
+                    <div className="bg-cta text-concrete-900 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0 z-10">
                       {item.step}
                     </div>
                     {i < data.timeline.length - 1 && (
@@ -772,13 +772,13 @@ export default async function TradePage({
       </section>
 
       {/* ─── Section 6: Bottom CTA ─── */}
-      <section className="bg-[#F5C518] py-16 md:py-24">
+      <section className="bg-cta py-16 md:py-24">
         <div className="max-w-[800px] mx-auto px-6 text-center">
           <FadeIn>
             <h2 className="font-heading text-3xl md:text-[40px] font-extrabold tracking-tight text-concrete-900 mb-5 leading-tight">
               {data.ctaHeadline}
             </h2>
-            <p className="text-lg text-concrete-400 mb-8 max-w-[500px] mx-auto">
+            <p className="text-lg text-concrete-900/60 mb-8 max-w-[500px] mx-auto">
               Get a free marketing audit. We&apos;ll show you exactly where booked
               jobs are leaking out -- and what your AI team would do about it.
             </p>

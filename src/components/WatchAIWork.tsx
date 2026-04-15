@@ -115,7 +115,7 @@ export default function WatchAIWork() {
             >
               <a
                 href="/audit"
-                className="inline-flex items-center gap-2 bg-[#F5C518] text-concrete-900 font-bold text-lg px-8 py-4 rounded-full transition-transform duration-200 hover:scale-105"
+                className="inline-flex items-center gap-2 bg-cta text-concrete-900 font-bold text-lg px-8 py-4 rounded-full transition-transform duration-200 hover:scale-105"
               >
                 Get Started
               </a>
@@ -146,7 +146,7 @@ export default function WatchAIWork() {
                     <span className="text-concrete-400">
                       42 hrs saved this week
                     </span>
-                    <span className="bg-[#F5C518] text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                    <span className="bg-cta text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
                       42
                     </span>
                   </div>
@@ -166,7 +166,7 @@ export default function WatchAIWork() {
                     transition={{ duration: 0.4, delay: 0.5 }}
                     className="mx-4 my-3"
                   >
-                    <div className="bg-[#F5C518] rounded-xl px-4 py-3 flex items-center justify-between">
+                    <div className="bg-cta rounded-xl px-4 py-3 flex items-center justify-between">
                       <p className="text-sm font-semibold text-black leading-snug">
                         Your AI team saved you
                         <br />
